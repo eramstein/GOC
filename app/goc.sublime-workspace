@@ -1,0 +1,646 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"font",
+				"font-family"
+			],
+			[
+				"update",
+				"updateChart"
+			],
+			[
+				"tran",
+				"transitionTime"
+			],
+			[
+				"lo",
+				"localDataPath"
+			],
+			[
+				"in",
+				"input	Tag"
+			],
+			[
+				"di",
+				"dimensions"
+			],
+			[
+				"brav",
+				"braves"
+			],
+			[
+				"ne",
+				"newPlayer"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"s",
+				"script	Tag"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "views/startup.html",
+			"settings":
+			{
+				"buffer_size": 1052,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "scripts/controllers/startup.js",
+			"settings":
+			{
+				"buffer_size": 4215,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "scripts/services/data.js",
+			"settings":
+			{
+				"buffer_size": 23687,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "scripts/services/dataload.js",
+			"settings":
+			{
+				"buffer_size": 989,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 58.0,
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Snippet: ",
+				"Snippet: Function"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Remove Package"
+			],
+			[
+				"linter",
+				"Preferences: SublimeLinter Settings – Default"
+			],
+			[
+				"uni",
+				"Preferences: SublimeLinter Settings – User"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"user",
+				"Preferences: Settings - User"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 416.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/services/dataload.js",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/services/data.js",
+		"/C/Users/Etienne/Desktop/GOC/app/index.html",
+		"/C/Users/Etienne/Desktop/test.html",
+		"/C/Users/Etienne/Desktop/GOC_backup/scripts/services/_bk_data_more_generic.js",
+		"/C/Users/Etienne/Desktop/GOC_backup/scripts/services/data.js",
+		"/C/Users/Etienne/Desktop/GOC/.jshintrc",
+		"/C/Users/Etienne/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Etienne/Desktop/PythonTuto/python_basics/helloWorld.py",
+		"/C/Users/Etienne/Desktop/PythonTuto/python_basics/foreach.py",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/controllers/main.js",
+		"/C/Users/Etienne/Desktop/GOC/app/views/filters.html",
+		"/C/Users/Etienne/Desktop/GOC/app/views/main.html",
+		"/C/Users/Etienne/Desktop/GOC/app/views/menu.html",
+		"/C/Users/Etienne/Desktop/GOC/app/views/options.html",
+		"/C/Users/Etienne/Desktop/GOC/app/views/startup.html",
+		"/C/Users/Etienne/Desktop/GOC/app/styles/main.css",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/controllers/startup.js",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/app.js",
+		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/dashboard.js",
+		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/dashboard.html",
+		"/C/Users/Etienne/Desktop/Old Stuff/bubules/app/views/filter.html",
+		"/C/Users/Etienne/Desktop/GOC/bower.json",
+		"/C/Users/Etienne/Desktop/GOC/Gruntfile.js",
+		"/C/Users/Etienne/Desktop/GOC/test/.jshintrc",
+		"/C/Users/Etienne/Desktop/GOC/test/spec/controllers/menu.js",
+		"/C/Users/Etienne/Desktop/GOC/test/runner.html",
+		"/C/Users/Etienne/Desktop/TheGame/test/spec/test.js",
+		"/C/Users/Etienne/Desktop/Old Stuff/React/index.html",
+		"/C/Users/Etienne/Desktop/TheGame/app/styles/game.css",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/gameState.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/units.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/mobs.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/selection.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/index.html",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/board.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/templates/selection.html",
+		"/C/Users/Etienne/Desktop/TheGame/app/styles/main.css",
+		"/C/Users/Etienne/AppData/Local/Temp/Temp1_IcoMoon-Free-master.zip/IcoMoon-Free-master/Font/demo-files/demo.css",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/global.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/village.js",
+		"/C/Users/Etienne/AppData/Local/Temp/Temp1_IcoMoon-Free-master.zip/IcoMoon-Free-master/Font/Reference.html",
+		"/C/Users/Etienne/AppData/Local/Temp/Temp1_IcoMoon-Free-master.zip/IcoMoon-Free-master/Font/demo-files/demo.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/stack.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/setup.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/engine/combat.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/main.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/engine/units.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/engine/mobs.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/engine/board.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/engine/stack.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/engine/setup.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/gameInfo.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/hints.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/utilities.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/templates/game-info.html",
+		"/C/Users/Etienne/Desktop/TheGame/bower.json",
+		"/C/Users/Etienne/Desktop/TheGame/Gruntfile.js",
+		"/C/Users/Etienne/Desktop/TheGame/package.json",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/gameState.json",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/main.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/svg.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/unit.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/ui.js",
+		"/C/Users/Etienne/Desktop/TheGame/.jshintrc",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/submodule.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/module.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/moveUnit.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/test.html",
+		"/C/Users/Etienne/Desktop/TheGame/app/test1.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/main - Copie.js",
+		"/C/Users/Etienne/Desktop/TheGame/bower_components/es6-module-loader/dist/es6-module-loader.js",
+		"/C/Users/Etienne/Desktop/TheGame/.bowerrc",
+		"/C/Users/Etienne/Desktop/TheGame/test/index.html",
+		"/C/Users/Etienne/Desktop/React/comments.json",
+		"/C/Users/Etienne/Desktop/React/index.html",
+		"/C/Users/Etienne/Desktop/React/react-0.12.1/build/react-with-addons.js",
+		"/C/Users/Etienne/Desktop/Pathways/pathways.html",
+		"/C/Users/Etienne/Desktop/Pathways/d3.min.js",
+		"/C/Users/Etienne/Desktop/Pathways/d3.layout.js",
+		"/C/Users/Etienne/Desktop/Pathways/d3.geom.min.js",
+		"/C/Users/Etienne/Desktop/SQ Firebase/app/js/engine/abilityprototype.js",
+		"/C/Users/Etienne/Desktop/FDA/app/scripts/directives/chartBarpie.js",
+		"/C/Users/Etienne/Desktop/FDA/app/scripts/directives/chartLines.js",
+		"/C/Users/Etienne/Desktop/FDA/app/views/tpllist.html",
+		"/C/Users/Etienne/Desktop/FDA/app/views/main.html",
+		"/C/Users/Etienne/Desktop/FDA/app/scripts/controllers/main.js",
+		"/C/Users/Etienne/Desktop/FDA/app/scripts/services/data.js",
+		"/C/Users/Etienne/Desktop/FDA/app/index.html",
+		"/C/Users/Etienne/Desktop/FDA/app/scripts/directives/chartList.js",
+		"/C/Users/Etienne/Desktop/FDA/app/styles/main.css",
+		"/C/Users/Etienne/Desktop/FDA/app/views/tplbarpie.html",
+		"/C/Users/Etienne/Desktop/FDA/app/styles/charts.css",
+		"/C/Users/Etienne/Desktop/FDA/app/bower_components/bootstrap/dist/css/bootstrap.css",
+		"/C/Users/Etienne/Desktop/FDA/app/scripts/app.js",
+		"/C/Users/Etienne/Desktop/OpenFDA/.gitignore",
+		"/C/Users/Etienne/Desktop/Wiki/app/index.html",
+		"/C/Users/Etienne/Desktop/OpenFDA/app/index.html",
+		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/barchart.js",
+		"/C/Users/Etienne/Desktop/FDA/app/scripts/directives/chartBarpieBK.js",
+		"/C/Users/Etienne/Desktop/FDA/.jshintrc",
+		"/C/Users/Etienne/Desktop/FDA/app/bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
+		"/C/Users/Etienne/Desktop/FDA/bower.json",
+		"/C/Users/Etienne/Desktop/Old Stuff/Mongoose/test.html",
+		"/C/Users/Etienne/Desktop/SQ Firebase/app/views/play/board.html",
+		"/C/Users/Etienne/Desktop/SQ Firebase/app/js/directives/brave.js",
+		"/C/Users/Etienne/Desktop/SQ Firebase/app/js/services/gameservice.js",
+		"/C/Users/Etienne/Desktop/bubules/app/views/list.html",
+		"/C/Users/Etienne/Desktop/bubules/app/views/main.html",
+		"/C/Users/Etienne/Desktop/bubules/app/scripts/controllers/list.js",
+		"/C/Users/Etienne/Desktop/web_components/index.html",
+		"/C/Users/Etienne/Desktop/web_components/demo.html",
+		"/C/Users/Etienne/Desktop/bubules/app/index.html",
+		"/C/Users/Etienne/Desktop/bubules/app/scripts/controllers/main.js",
+		"/C/Users/Etienne/Desktop/bubules/.jshintrc",
+		"/C/Users/Etienne/Desktop/bubules/bower.json",
+		"/C/Users/Etienne/Desktop/bubules/.gitignore",
+		"/C/Users/Etienne/Desktop/bubules/package.json",
+		"/C/Users/Etienne/Desktop/Wiki/.jshintrc",
+		"/C/Users/Etienne/Desktop/Wiki/package.json",
+		"/C/Users/Etienne/Desktop/bubules/app/styles/main.css",
+		"/C/Users/Etienne/Desktop/bubules/app/scripts/app.js",
+		"/C/Users/Etienne/Desktop/bubules/test/spec/controllers/main.js",
+		"/C/Users/Etienne/Desktop/Wiki/.bowerrc",
+		"/C/Users/Etienne/Desktop/bubules/.bowerrc",
+		"/C/Users/Etienne/Desktop/bubules/test/runner.html",
+		"/C/Users/Etienne/Desktop/web_components/app.js",
+		"/C/Users/Etienne/Desktop/Wiki/app/demo.html"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"C:\\Users\\Etienne\\Desktop\\TheGame\\app",
+			"C:\\Users\\Etienne\\Desktop\\Wiki",
+			"C:\\Users\\Etienne\\Desktop\\SQ Firebase\\app",
+			"C:\\Users\\Etienne\\Desktop\\SQ Firebase\\app\\js",
+			"C:\\Users\\Etienne\\Desktop\\SQ Firebase"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"loadData",
+			"\"",
+			"loadDataFromFile",
+			"this",
+			"_dim",
+			"_setGroupAll",
+			"aggregateOver",
+			"_setGroups",
+			"_dim",
+			"dimToGroup._groupedBy",
+			"_dim",
+			"uniquesCount",
+			"aggregator",
+			"aggregateOverTwoDims",
+			"_uniqueValuesCount",
+			"value",
+			"sum",
+			"count",
+			"_count_",
+			"_uniqueValuesCount",
+			"dim",
+			"_aggregateOverTwoNominalDims",
+			"_dim",
+			"newVal",
+			"values",
+			"d",
+			"efficient",
+			"this",
+			"avg",
+			"//",
+			"groupBy",
+			"_groupBy",
+			"dim",
+			"buildGroups",
+			"_setGroupsAndReduce",
+			"_setGroupAll",
+			"aggregateOver",
+			"_setGroupsAndReduce",
+			"_setGroupN",
+			"_groupOverTwoNominalDims",
+			"_setGroupQN",
+			"_' + dim.name",
+			"_dim",
+			"._cfDim",
+			"dimsN[1]",
+			"dimQ",
+			"cfDim",
+			"cfGroup",
+			"_dim.groupBy",
+			"getValuesQN",
+			"getValuesN",
+			"p._sum",
+			"p._count",
+			"p._uniqueValuesCount",
+			"d.",
+			"countUniques",
+			"d.project",
+			"projects",
+			"cfGroup",
+			"nominal",
+			"groupBy",
+			"_sourceData",
+			"Taxes",
+			"'Garden': '0'",
+			"Garden",
+			"Surface",
+			"this",
+			"forEach",
+			"angular.forEach",
+			"_dims",
+			"dimensions",
+			"_sourceData",
+			"type",
+			"key",
+			"aggregator",
+			"_cfDims",
+			"Sum",
+			"cf",
+			"sourceData",
+			"_this.dimensions",
+			"_cfDim",
+			"this.dimensions",
+			"Values",
+			"sourceData",
+			"value",
+			"checkDataValidity",
+			"	",
+			"\"",
+			"date",
+			"”",
+			"“",
+			"currentStep",
+			"selectDatasource",
+			"afterLoadCb",
+			"firstDraw",
+			"\"",
+			"localData",
+			" btn-lg",
+			"onCommentSubmit",
+			"div",
+			"unit",
+			"id",
+			"UI.State.itemSelected",
+			"unitSelected",
+			"unitId",
+			"unit",
+			"unitSelected",
+			"movePattern",
+			"arrow-up-right",
+			"arror-up-right",
+			"unit",
+			"num",
+			"sum",
+			"moveAll",
+			"\"",
+			"getWinner",
+			"Setup",
+			"\"",
+			"Board",
+			"healthMax",
+			"unit",
+			"Unit",
+			"unit",
+			"unit.current.health",
+			"Pos",
+			"Unit.getUnitCountAtPos(mob.pos)",
+			".length",
+			"Count"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": true,
+		"regex": false,
+		"replace_history":
+		[
+			"'",
+			"update",
+			"mob",
+			"getMobCountAtPos",
+			"getUnitCountAtPos",
+			"getUnitsAtPos",
+			"Mob",
+			"unit",
+			"'",
+			"template",
+			"triplet",
+			"Article",
+			"",
+			" ",
+			"",
+			" ,",
+			" ",
+			".",
+			",",
+			"site",
+			"sites",
+			"game",
+			"brave",
+			"game",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "views/startup.html",
+					"settings":
+					{
+						"buffer_size": 1052,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								886,
+								900
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "scripts/controllers/startup.js",
+					"settings":
+					{
+						"buffer_size": 4215,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								487,
+								487
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "scripts/services/data.js",
+					"settings":
+					{
+						"buffer_size": 23687,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								19312,
+								22555
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 6913.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "scripts/services/dataload.js",
+					"settings":
+					{
+						"buffer_size": 989,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								757,
+								780
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 30.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 221.0,
+	"status_bar_visible": true
+}

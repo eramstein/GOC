@@ -1,0 +1,35 @@
+<div ng-controller="StartupCtrl" class="container" ng-show="state.visibility.startup">
+
+	<div class="startup-step" ng-show="currentStep==='uploadData'">
+		<div class="jumbotron">
+			<h1 align="center">Welcome to GOC!</h1>
+
+			<h2 align="center">A quick way to visually explore your data</h2>	  	
+
+		</div>
+
+		<h2>Load data from a...</h2>
+
+		<div>
+
+			<span class="btn btn-default btn-lg btn-file" href="#" role="button">File 
+				<input type="file" accept="{{acceptedFileExtensions}}" onchange="angular.element(this).scope().loadDataFromFile(this, angular.element(this).scope().showDataReport)">
+			</span>
+
+			<span class="btn btn-default btn-lg" href="#" role="button" disabled="disabled">Saved dataset</span>
+
+			<span class="btn btn-default btn-lg" href="#" role="button" disabled="disabled">Web service</span>
+
+		</div>
+
+	</div>
+
+	<div class="startup-step" ng-show="currentStep==='showDataReport'">
+		This is what we found.
+	</div>
+
+	<div class="startup-step" ng-show="currentStep==='defineFirstChart'">
+		What do you want to see ?
+	</div>
+
+</div>
