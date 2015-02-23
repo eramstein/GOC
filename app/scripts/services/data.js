@@ -8,16 +8,19 @@
     - checks and cleans data
     - builds Data.dimensions. each attribute in the data objects becomes a dimension.
 
+    Data.getRecordCount()
+
     Data.dimensions: {'dimName': Dimension}
     This is the API to filter, group and aggregate data.
     Each dimension has the following public attributes and methods.
 
     Dimension {
         name: the attribute's key in the source data ('price', 'country')
-        type: 'nominal', 'quantNum' or 'quantDate'
+        scaleType: 'ordinal' or 'quantitative'
+        dataType: 'text', 'number' or 'date'
 
         groupOn(): creates a group of distinct values for that dimension (discretizes it if needed), and aggregates values of other dimensions passed as an array param
-                   if no param passed, returns number of record per group in the dimension                   
+                   if no param passed, returns number of record per group in the dimension. as a consequence, groupOn().length is the number of distinct values                   
                    input:  [{'name': dimension.name, 'aggregator': 'sum' or 'avg' or 'countUniques' or 'none'}]
                            e.g. [{'name': 'GDP', 'aggregator': 'sum'}, {'name': 'Life Expectancy', 'aggregator': 'avg'}]
                    output: [{'continent': 'Europe', 'GDP': 1000, 'Life Expectancy': 80}]
@@ -38,17 +41,14 @@
 
     Note: filters act on all OTHER dimensions
 
-    TODO: this service's design is too tightly coupled with what the chart manager needs
+    TODO: this service's design is too tightly coupled with what the chart manager use cases
           a more generic abstract layer could be easier to maintain and more re-usable
           e.g. get rid of Dimension.groupOn and aggregateOver, replace by Data.getData(dimsToGroup, dimsToMeasure)
 
 */
 
 angular.module('gocApp')
-  .service('Data', function Data() {
-
-    var _this = this;
-    var _sourceData;
+  .service('Data', function Data() {    
 
     // PUBLIC
     // ---------------------------------------------------
@@ -67,13 +67,21 @@ angular.module('gocApp')
         cleanData(data);
 
         buildDimensions(data);
+    };
 
-        console.log('data loaded');
+    this.getRecordCount = function() {
+        var recordCount = 0;
+        if(_cf){
+            recordCount = _cf.size();
+        }
+        return recordCount;
     };
 
     // PRIVATE
     // ---------------------------------------------------
     
+    var _this = this;
+    var _sourceData;
     var _cf;
     var _cfAll;
     var _cfAllGroupBy;
@@ -102,8 +110,8 @@ angular.module('gocApp')
         //force numeric fields to be numbers
         var sample = _.clone(data[0], true);
         _.forEach(sample, function(value, key) {
-            if(getType(key) === 'quantNum'){
-                _.forEach(data, function(d, i) {
+            if(getType(key).dataType === 'number'){
+                _.forEach(data, function(d, i) {                    
                     d[key] = +d[key];
                 });
             }
@@ -112,25 +120,29 @@ angular.module('gocApp')
 
     function getType(key) {
 
-        var dataType;
+        var output = {};
         // TODO: this looks only at the first record !
         var sample = _sourceData[0][key];
         
         if (isDate(sample)) {
             if (isNaN(sample)) {
-                dataType = 'quantDate';
+                output.scaleType = 'ordinal';
+                output.dataType = 'date';
             } else {
-                dataType = 'quantNum';
+                output.scaleType = 'quantitative';
+                output.dataType = 'number';
             }
         } else {
             if (isNaN(sample)) {
-                dataType = 'nominal';
+                output.scaleType = 'ordinal';
+                output.dataType = 'text';
             } else {
-                dataType = 'quantNum';
+                output.scaleType = 'quantitative';
+                output.dataType = 'number';
             }
         }
 
-        return dataType;
+        return output;
 
         function isDate(val) {
             var d = new Date(val);
@@ -143,7 +155,8 @@ angular.module('gocApp')
 
     function Dimension(key) {
         this.name = key;
-        this.type = getType(key);
+        this.scaleType = getType(key).scaleType;
+        this.dataType = getType(key).dataType;
         this._groupedBy = null;
         this._cfGroup = null;
         this._cfDim = _cf.dimension(function(d) {
@@ -214,7 +227,7 @@ angular.module('gocApp')
         //case no dim to group on, we aggregate on _dim itself and return the value
         if(groupBy.dims.length === 0){
             if(!_.isEqual('groupAll', _dim._groupedBy)){
-                _dim._setGroupAll(groupBy.aggregator);
+                _dim._groupAll(groupBy.aggregator);
                 _dim._groupedBy = 'groupAll';
             }
             values = _dim._cfGroup.value();
@@ -287,7 +300,7 @@ angular.module('gocApp')
         return stats;
     };
 
-    Dimension.prototype._setGroupAll = function(aggregator) {
+    Dimension.prototype._groupAll = function(aggregator) {
        this._cfGroup = this._cfDim.groupAll();
        if(aggregator === 'sum'){
             var reduceSumFunc = new Function('d', 'return d.' + this.name);
@@ -318,12 +331,12 @@ angular.module('gocApp')
     };
 
     //groups this dimension on unique values and
-    //aggregates on the quantNum dimensions specified in the groupBy parameter [{name: dim1, aggregator: sum}]
+    //aggregates on the quantitative dimensions specified in the groupBy parameter [{name: dim1, aggregator: sum}]
     //aggregator can be sum, avg, countUniques, none (in that case it just returns the last found value - works fine if they are all the same)
     Dimension.prototype._setGroups = function(groupBy) {
         var _dim = this;
         //build group
-        if(_dim.type === 'nominal'){
+        if(_dim.scaleType === 'ordinal'){
             _dim._cfGroup = _dim._cfDim.group();
         } else {
             //for quantitative dimensions, we discretize them on rounded values
@@ -407,8 +420,8 @@ angular.module('gocApp')
 
     //aggregate on this dimension, grouping on two other dimensions 
     //groupBy.dims is an array of 2 dims, groupBy.aggregator is sum or avg
-    //if the first dim is quantNum, groups will be based on rounded values
-    // TODO: allow rounding if teh second dim is quantNum (atm it would use all unique values)
+    //if the first dim is quantitative, groups will be based on rounded values
+    // TODO: allow rounding if teh second dim is quantitative (atm it would use all unique values)
     Dimension.prototype._aggregateOverTwoDims = function(groupBy) {
         
         var _dim = this;
@@ -416,7 +429,7 @@ angular.module('gocApp')
         var dim2 = _this.dimensions[groupBy.dims[1]];
 
         //group on the first dim
-        if(dim1.type === 'nominal'){
+        if(dim1.scaleType === 'ordinal'){
             dim1._cfGroup = dim1._cfDim.group();
         } else {
             //for quantitative dimensions, we discretize them on rounded values

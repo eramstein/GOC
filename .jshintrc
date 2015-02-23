@@ -13,7 +13,7 @@
   "noarg": true,
   "quotmark": "single",
   "regexp": true,
-  "undef": true,
+  "undef": false,
   "unused": false,
   "strict": true,
   "trailing": false,
@@ -23,6 +23,8 @@
     "angular": false,
     "d3": false,
     "crossfilter": false,
+    "CHARTS_CONSTRUCTORS": false,
+    "CHARTS_CONFIG": false,
     "_": false
   }
 }

@@ -1,7 +1,10 @@
-<div id="sidebar" ng-show="state.visibility.sidebar">
+<div id="main-sidebar" ng-show="state.visibility.sidebar">
 	<div ng-include="'views/menu.html'"></div>
 	<div ng-include="'views/filters.html'"></div>
 </div>
 
-<div ng-include="'views/startup.html'"></div>
-<div ng-include="'views/options.html'"></div>
+<div id="main-charts" ng-include="'views/charts.html'" ng-show="state.visibility.charts"></div>
+
+<div id="main-startup" ng-include="'views/startup.html'" ng-show="state.visibility.startup"></div>
+
+<div id="main-options" ng-include="'views/options.html'" ng-show="state.visibility.options"></div>

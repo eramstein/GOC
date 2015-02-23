@@ -6,6 +6,7 @@ angular.module('gocApp')
         $scope.state = {
             visibility: {
                 sidebar: false,
+                charts: false,
                 options: false,
                 startup: true
             }

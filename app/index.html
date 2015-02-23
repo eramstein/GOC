@@ -16,6 +16,7 @@
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/charts.css">
     <!-- endbuild -->
   </head>
   <body ng-app="gocApp">
@@ -43,6 +44,12 @@
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/charts/config.js"></script>
+        <script src="scripts/charts/chartModule.js"></script>
+        <script src="scripts/charts/constantsBubles.js"></script>
+        <script src="scripts/charts/scatterplot.js"></script>
+
+
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/menu.js"></script>
@@ -51,6 +58,11 @@
         <script src="scripts/controllers/startup.js"></script>
         <script src="scripts/services/data.js"></script>
         <script src="scripts/services/dataload.js"></script>
+        <script src="scripts/directives/filterhandler.js"></script>
+        <script src="scripts/directives/dimensionsummary.js"></script>
+        <script src="scripts/controllers/charts.js"></script>
+        <script src="scripts/services/chartsmanager.js"></script>
+        <script src="scripts/directives/chart.js"></script>        
         <!-- endbuild -->
 </body>
 </html>

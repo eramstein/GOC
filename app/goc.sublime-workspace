@@ -4,8 +4,16 @@
 		"selected_items":
 		[
 			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"te",
+				"text-decoration"
+			],
+			[
 				"font",
-				"font-family"
+				"font-size"
 			],
 			[
 				"update",
@@ -48,34 +56,66 @@
 	"buffers":
 	[
 		{
-			"file": "views/startup.html",
+			"file": "scripts/charts/chartModule.js",
 			"settings":
 			{
-				"buffer_size": 1052,
+				"buffer_size": 828,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "scripts/controllers/startup.js",
+			"file": "scripts/charts/constantsBubles.js",
 			"settings":
 			{
-				"buffer_size": 4215,
+				"buffer_size": 1000,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "scripts/charts/config.js",
+			"settings":
+			{
+				"buffer_size": 97,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "styles/charts.css",
+			"settings":
+			{
+				"buffer_size": 71,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Etienne/Desktop/Old Stuff/Bubbles/commonChartElements.js",
+			"settings":
+			{
+				"buffer_size": 6709,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "scripts/directives/chart.js",
+			"settings":
+			{
+				"buffer_size": 2067,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "scripts/services/data.js",
+			"file": "views/templates/chart.html",
 			"settings":
 			{
-				"buffer_size": 23687,
-				"line_ending": "Unix"
+				"buffer_size": 6026,
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "scripts/services/dataload.js",
+			"file": "/C/Users/Etienne/Desktop/GOC/.jshintrc",
 			"settings":
 			{
-				"buffer_size": 989,
+				"buffer_size": 539,
 				"line_ending": "Unix"
 			}
 		}
@@ -148,30 +188,51 @@
 	},
 	"file_history":
 	[
-		"/C/Users/Etienne/Desktop/GOC/app/scripts/services/dataload.js",
-		"/C/Users/Etienne/Desktop/GOC/app/scripts/services/data.js",
+		"/C/Users/Etienne/Desktop/GOC/.jshintrc",
 		"/C/Users/Etienne/Desktop/GOC/app/index.html",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/chartCommons.js",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/chartCommonsBubles.js",
+		"/C/Users/Etienne/Desktop/GOC/app/styles/main.css",
+		"/C/Users/Etienne/Desktop/GOC/app/views/templates/chart.html",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/chartModule.js",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/scatterplot.js",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/directives/chart.js",
+		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/commonChartElements.js",
+		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/scatterplot.js",
+		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/dashboard.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/mobs.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/setup.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/main.js",
+		"/C/Users/Etienne/Desktop/GOC/app/views/main.html",
+		"/C/Users/Etienne/Desktop/GOC/app/views/charts.html",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/controllers/charts.js",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/services/chartsmanager.js",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/services/data.js",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/controllers/startup.js",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/controllers/main.js",
+		"/C/Users/Etienne/Desktop/GOC/app/views/templates/dimensionSummary.html",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/directives/dimensionsummary.js",
+		"/C/Users/Etienne/Desktop/GOC/app/views/startup.html",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/services/dataload.js",
+		"/C/Users/Etienne/Desktop/Old Stuff/FDA/app/views/tplbarpie.html",
+		"/C/Users/Etienne/Desktop/Old Stuff/FDA/app/scripts/directives/chartBarpie.js",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/directives/filterhandler.js",
+		"/C/Users/Etienne/Desktop/GOC/app/views/templates/filterHandler.html",
+		"/C/Users/Etienne/Desktop/GOC/Gruntfile.js",
+		"/C/Users/Etienne/Desktop/GOC/test/spec/services/data.js",
 		"/C/Users/Etienne/Desktop/test.html",
 		"/C/Users/Etienne/Desktop/GOC_backup/scripts/services/_bk_data_more_generic.js",
 		"/C/Users/Etienne/Desktop/GOC_backup/scripts/services/data.js",
-		"/C/Users/Etienne/Desktop/GOC/.jshintrc",
 		"/C/Users/Etienne/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 		"/C/Users/Etienne/Desktop/PythonTuto/python_basics/helloWorld.py",
 		"/C/Users/Etienne/Desktop/PythonTuto/python_basics/foreach.py",
-		"/C/Users/Etienne/Desktop/GOC/app/scripts/controllers/main.js",
 		"/C/Users/Etienne/Desktop/GOC/app/views/filters.html",
-		"/C/Users/Etienne/Desktop/GOC/app/views/main.html",
 		"/C/Users/Etienne/Desktop/GOC/app/views/menu.html",
 		"/C/Users/Etienne/Desktop/GOC/app/views/options.html",
-		"/C/Users/Etienne/Desktop/GOC/app/views/startup.html",
-		"/C/Users/Etienne/Desktop/GOC/app/styles/main.css",
-		"/C/Users/Etienne/Desktop/GOC/app/scripts/controllers/startup.js",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/app.js",
-		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/dashboard.js",
 		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/dashboard.html",
 		"/C/Users/Etienne/Desktop/Old Stuff/bubules/app/views/filter.html",
 		"/C/Users/Etienne/Desktop/GOC/bower.json",
-		"/C/Users/Etienne/Desktop/GOC/Gruntfile.js",
 		"/C/Users/Etienne/Desktop/GOC/test/.jshintrc",
 		"/C/Users/Etienne/Desktop/GOC/test/spec/controllers/menu.js",
 		"/C/Users/Etienne/Desktop/GOC/test/runner.html",
@@ -180,7 +241,6 @@
 		"/C/Users/Etienne/Desktop/TheGame/app/styles/game.css",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/gameState.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/units.js",
-		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/mobs.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/selection.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/index.html",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/board.js",
@@ -192,9 +252,7 @@
 		"/C/Users/Etienne/AppData/Local/Temp/Temp1_IcoMoon-Free-master.zip/IcoMoon-Free-master/Font/Reference.html",
 		"/C/Users/Etienne/AppData/Local/Temp/Temp1_IcoMoon-Free-master.zip/IcoMoon-Free-master/Font/demo-files/demo.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/stack.js",
-		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/setup.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/engine/combat.js",
-		"/C/Users/Etienne/Desktop/TheGame/app/scripts/main.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/engine/units.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/engine/mobs.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/engine/board.js",
@@ -257,25 +315,7 @@
 		"/C/Users/Etienne/Desktop/SQ Firebase/app/js/services/gameservice.js",
 		"/C/Users/Etienne/Desktop/bubules/app/views/list.html",
 		"/C/Users/Etienne/Desktop/bubules/app/views/main.html",
-		"/C/Users/Etienne/Desktop/bubules/app/scripts/controllers/list.js",
-		"/C/Users/Etienne/Desktop/web_components/index.html",
-		"/C/Users/Etienne/Desktop/web_components/demo.html",
-		"/C/Users/Etienne/Desktop/bubules/app/index.html",
-		"/C/Users/Etienne/Desktop/bubules/app/scripts/controllers/main.js",
-		"/C/Users/Etienne/Desktop/bubules/.jshintrc",
-		"/C/Users/Etienne/Desktop/bubules/bower.json",
-		"/C/Users/Etienne/Desktop/bubules/.gitignore",
-		"/C/Users/Etienne/Desktop/bubules/package.json",
-		"/C/Users/Etienne/Desktop/Wiki/.jshintrc",
-		"/C/Users/Etienne/Desktop/Wiki/package.json",
-		"/C/Users/Etienne/Desktop/bubules/app/styles/main.css",
-		"/C/Users/Etienne/Desktop/bubules/app/scripts/app.js",
-		"/C/Users/Etienne/Desktop/bubules/test/spec/controllers/main.js",
-		"/C/Users/Etienne/Desktop/Wiki/.bowerrc",
-		"/C/Users/Etienne/Desktop/bubules/.bowerrc",
-		"/C/Users/Etienne/Desktop/bubules/test/runner.html",
-		"/C/Users/Etienne/Desktop/web_components/app.js",
-		"/C/Users/Etienne/Desktop/Wiki/app/demo.html"
+		"/C/Users/Etienne/Desktop/bubules/app/scripts/controllers/list.js"
 	],
 	"find":
 	{
@@ -298,6 +338,61 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"circles",
+			"color",
+			"false",
+			"true",
+			"\"",
+			"make",
+			"true",
+			"const",
+			"constants",
+			"Cons",
+			"UI",
+			"0",
+			"sliceBy(dim, 1)",
+			"posBy",
+			"colorBy",
+			"spreadOver",
+			"colorBy",
+			"0",
+			"userSelection.showMe",
+			"scope.",
+			"sum",
+			"Data.dimensions",
+			"Data.dimensions,",
+			"i",
+			"icon-arrow-up",
+			" tabindex=\"-1\"",
+			" role=\"presentation\"",
+			" role=\"menuitem\"",
+			" role=\"menu\"",
+			"text",
+			"[]",
+			"config",
+			"btn-default",
+			"danger",
+			"startup",
+			"testData",
+			"span",
+			"'Name'",
+			"span",
+			"div",
+			"_this.",
+			"size",
+			"$scope",
+			"data",
+			"'Surface'",
+			"_setGroupAll",
+			"dataType",
+			"type",
+			"Type",
+			"type",
+			"quantDate",
+			"nominal",
+			"quantDate",
+			"quantNum",
+			"nominal",
 			"loadData",
 			"\"",
 			"loadDataFromFile",
@@ -370,62 +465,7 @@
 			"_dims",
 			"dimensions",
 			"_sourceData",
-			"type",
-			"key",
-			"aggregator",
-			"_cfDims",
-			"Sum",
-			"cf",
-			"sourceData",
-			"_this.dimensions",
-			"_cfDim",
-			"this.dimensions",
-			"Values",
-			"sourceData",
-			"value",
-			"checkDataValidity",
-			"	",
-			"\"",
-			"date",
-			"”",
-			"“",
-			"currentStep",
-			"selectDatasource",
-			"afterLoadCb",
-			"firstDraw",
-			"\"",
-			"localData",
-			" btn-lg",
-			"onCommentSubmit",
-			"div",
-			"unit",
-			"id",
-			"UI.State.itemSelected",
-			"unitSelected",
-			"unitId",
-			"unit",
-			"unitSelected",
-			"movePattern",
-			"arrow-up-right",
-			"arror-up-right",
-			"unit",
-			"num",
-			"sum",
-			"moveAll",
-			"\"",
-			"getWinner",
-			"Setup",
-			"\"",
-			"Board",
-			"healthMax",
-			"unit",
-			"Unit",
-			"unit",
-			"unit.current.health",
-			"Pos",
-			"Unit.getUnitCountAtPos(mob.pos)",
-			".length",
-			"Count"
+			"type"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -473,24 +513,25 @@
 			[
 				{
 					"buffer": 0,
-					"file": "views/startup.html",
+					"file": "scripts/charts/chartModule.js",
 					"settings":
 					{
-						"buffer_size": 1052,
+						"buffer_size": 828,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								886,
-								900
+								787,
+								787
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -500,18 +541,18 @@
 				},
 				{
 					"buffer": 1,
-					"file": "scripts/controllers/startup.js",
+					"file": "scripts/charts/constantsBubles.js",
 					"settings":
 					{
-						"buffer_size": 4215,
+						"buffer_size": 1000,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								487,
-								487
+								879,
+								879
 							]
 						],
 						"settings":
@@ -528,52 +569,160 @@
 				},
 				{
 					"buffer": 2,
-					"file": "scripts/services/data.js",
+					"file": "scripts/charts/config.js",
 					"settings":
 					{
-						"buffer_size": 23687,
+						"buffer_size": 97,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								19312,
-								22555
+								14,
+								14
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 6913.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "scripts/services/dataload.js",
+					"file": "styles/charts.css",
 					"settings":
 					{
-						"buffer_size": 989,
+						"buffer_size": 71,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								757,
-								780
+								63,
+								63
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/C/Users/Etienne/Desktop/Old Stuff/Bubbles/commonChartElements.js",
+					"settings":
+					{
+						"buffer_size": 6709,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1602,
+								1612
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 454.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "scripts/directives/chart.js",
+					"settings":
+					{
+						"buffer_size": 2067,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2041,
+								2041
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 123.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "views/templates/chart.html",
+					"settings":
+					{
+						"buffer_size": 6026,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6026,
+								6026
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1852.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/C/Users/Etienne/Desktop/GOC/.jshintrc",
+					"settings":
+					{
+						"buffer_size": 539,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								455,
+								517
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,

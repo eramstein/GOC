@@ -2,7 +2,30 @@ body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-/***	STARTUP		***/
+/***************************************************
+        MAIN 
+***************************************************/
+
+#main-sidebar{
+    float:left;
+    width:200px;
+}
+
+#main-charts{
+    float:left;
+}
+
+/***************************************************
+        CHART 
+***************************************************/
+
+chart .chart-config-block, chart .help-text, chart .dropdown{
+    float:left;
+}
+
+/***************************************************
+        STARTUP	
+***************************************************/
 
 .btn-file {
     position: relative;
@@ -31,4 +54,39 @@ body {
 .startup-step .btn{
 	width: 180px;
 	margin-right: 10px;
+}
+
+.record-count{
+    font-weight: bold;
+    font-size: 150%;
+}
+
+.features-list{
+    padding-top:40px;
+    padding-bottom:30px;
+}
+
+dimension-summary .dimension-name{
+    font-weight: bold;
+    font-size: 120%;
+    cursor: pointer;
+}
+
+dimension-summary .dimension-name:hover{
+    text-decoration: underline;
+}
+
+.dimension-summary-left{
+    float:left;
+    width:200px;
+    text-align:right;
+}
+
+.dimension-summary-left, .dimension-summary-right{
+    line-height:35px;
+}
+
+.dimension-hint{
+    font-style: italic;
+    font-size: 110%;
 }

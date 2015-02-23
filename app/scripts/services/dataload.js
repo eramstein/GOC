@@ -18,6 +18,7 @@ angular.module('gocApp')
                     data = d3[extension].parse(data);
                     Data.prepareData(data);
                     if(callback){
+                        console.log('call back');
                         callback();
                     }
                 };

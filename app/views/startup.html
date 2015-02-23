@@ -25,11 +25,24 @@
 	</div>
 
 	<div class="startup-step" ng-show="currentStep==='showDataReport'">
-		This is what we found.
-	</div>
+		<div class="dimension-summary-left">
+			We found <span class="record-count">{{data.recordCount}} records</span>
+		</div>
+		<div class="dimension-summary-right">
+			, with the following features:
+		</div>
 
-	<div class="startup-step" ng-show="currentStep==='defineFirstChart'">
-		What do you want to see ?
+		<div class="features-list clearfix">
+			<dimension-summary ng-repeat="dim in data.dims" dimension="{{dim.name}}" createfn="createChart"></dimension-summary>
+		</div>
+
+		<div class="dimension-summary-left">
+			<span class="glyphicon glyphicon-hand-up"></span>
+		</div>
+		<div class="dimension-summary-right dimension-hint">
+			&nbsp;Select a feature to start the visualization
+		</div>
+
 	</div>
 
 </div>
