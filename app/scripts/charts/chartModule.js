@@ -9,9 +9,6 @@
     {
         constants: {
             bubles: {
-                circles 
-                size()
-                color()
             }
         },
         scatterplot: {
@@ -32,6 +29,8 @@ var CHARTS = function(svg) {
     this.constants = {
         'bubles': new CHARTS_CONSTRUCTORS.ConstantsBubles(svg)
     };
+
+    this.baloons = new CHARTS_CONSTRUCTORS.Baloons(svg);
 };
 
 var CHARTS_CONSTRUCTORS = {};

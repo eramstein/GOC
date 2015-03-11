@@ -1,26 +1,106 @@
 'use strict';
 
 angular.module('gocApp')
-  .directive('chart', function ($window, Data) {
+  .directive('chart', function ($window, Data, Config) {
     return {
       templateUrl: '/views/templates/chart.html',
       restrict: 'E',
       scope: {initConfig: '=config'},
       link: function postLink(scope, element, attrs) {
 
-        // CHART CONFIG UI
-        // ---------------------------------------------------
-
         var dimensions = Data.dimensions;
+
+        // ------------------------------------------------------------------------------------------------
+        // INTERACTION WITH D3 MODULES
+        // ------------------------------------------------------------------------------------------------
+                
+        var svg = element[0].querySelector('svg');    
+        var chart = new $window.CHARTS(svg);
+        var data;
+        var previousChart = {
+          'showMe': {'dim': null, 'agg': null, 'type': null},
+          'viewBy': [],
+          'chartTypeName': null
+        };
+
+        chart.showMeChanged = function () {
+          var showMe = {'dim': scope.userSelection.showMe.dim, 'agg': scope.userSelection.showMe.agg, 'type': scope.userSelection.showMe.type};
+
+          if(_.isEqual(showMe, previousChart.showMe)){
+            return false;
+          }
+
+          //if only the aggregation method changed
+          if(showMe.dim === previousChart.showMe.dim && showMe.agg !== previousChart.showMe.agg){
+            // TODO
+          }
+
+          //if the dimension changed...
+          if(showMe.dim !== previousChart.showMe.dim) {            
+
+            //clear previous chart
+            if(previousChart.chartTypeName) {
+              //if the previous dim was text, clear old bubles
+              if(previousChart.showMe.type === 'text') {
+                chart.constants.bubles.update([], showMe.dim);
+              }
+
+              //if the previous dim was number, clear old paths
+              if(previousChart.showMe.type === 'number') {
+                // TODO
+              }
+              
+              chart[previousChart.chartTypeName].clear(data);
+            }
+            
+
+            //if the new dim is text, create new bubles
+            if(showMe.type === 'text') {
+              data = dimensions[showMe.dim].groupOnAndAggAll();
+              chart.constants.bubles.update(data, showMe.dim);
+              chart[scope.userSelection.chartType.name].build();
+              chart[scope.userSelection.chartType.name].update(data, []);
+            }
+
+            //if the new dim is number, create new paths
+            if(showMe.type === 'number') {
+              data = dimensions[showMe.dim].aggregateOver({'dims':[], 'aggregator':showMe.agg});
+              //TODO
+            }
+          }          
+
+          //update previousChart
+          previousChart.showMe = showMe;
+        };
+
+        chart.viewByChanged = function () {
+          chart[scope.userSelection.chartType.name].update(data, scope.userSelection.viewBy);
+        };
+
+        chart.chartTypeChanged = function () {
+          var chartType = scope.userSelection.chartType.name;
+
+        };
+
+        chart.colorByChanged = function () {
+
+        };
+
+        chart.sizeByChanged = function () {
+
+        };
+
+        // ------------------------------------------------------------------------------------------------
+        // CHART CONFIG UI
+        // ------------------------------------------------------------------------------------------------                
 
         scope.userSelection = {
             'showMe': {'dim': null, 'agg': null, 'type': null},
-            'sliceBy': [],
-            'posBy': [],
+            'viewBy': [],
             'colorBy': null,
             'sizeBy': null,
             'chartType': null
-        };        
+        };
 
         //list of dims available as "show me" - all but time        
         scope.showMeDims = {
@@ -28,35 +108,74 @@ angular.module('gocApp')
           'number':  _.pluck(_.filter(dimensions, { 'dataType': 'number' }), 'name')
         };
 
-        //setters (can't use ng-model with bootstrap dropdowns, don't want to use angular UI just for that)  
-        scope.showMe = function (dim) {
+        //setters 
+        scope.changeShowMe = function (dim) {
+          //update userSelection.showMe
           scope.userSelection.showMe.dim = dim;
           scope.userSelection.showMe.type = dimensions[dim].dataType;
+          scope.userSelection.showMe.hasUniqueValues = dimensions[dim].hasUniqueValues;
           if(dimensions[dim].dataType === 'number' && !scope.userSelection.showMe.agg){
             scope.userSelection.showMe.agg = 'sum';
           }
+          //clear all other userSelection
+          scope.userSelection.viewBy = [];
+          scope.userSelection.colorBy = null;
+          scope.userSelection.sizeBy = null;
+          //reset chart types dropdown
+          scope.refreshAvailableChartTypes();
+          //tell the chart
+          chart.showMeChanged();
         };
 
-        scope.posBy = function (dim, index) {
+        scope.changeViewBy = function (dim, index) {
+          //update userSelection.viewBy
           if(dim){
-            scope.userSelection.posBy[index] = {'dim': dim, 'agg': 'sum'};
+            scope.userSelection.viewBy[index] = {'dim': dim, 'type': dimensions[dim].dataType, 'agg': 'sum'};
           } else {
-            scope.userSelection.posBy[index] = null;
-          }          
+            scope.userSelection.viewBy.splice(index, 1);
+          }
+          //reset chart types dropdown
+          scope.refreshAvailableChartTypes();
+          //tell the chart
+          chart.viewByChanged();
+        };
+
+        scope.changeChartType = function (chartType) {
+          scope.userSelection.chartType = chartType;
+        };
+
+        //find which chart types are relevant based on the currently selected showMe (primaryDataType) and viewBy (secondaryDatatypes)
+        scope.refreshAvailableChartTypes = function() {
+
+          //get primaryDataType and secondaryDatatypes
+          var primaryDataType = scope.userSelection.showMe.type;
+          var secondaryDatatypes = [];
+          if (scope.userSelection.viewBy[0]) {
+            if (scope.userSelection.viewBy[1]) {
+              secondaryDatatypes = [scope.userSelection.viewBy[0].type, scope.userSelection.viewBy[1].type];
+            } else {
+              secondaryDatatypes = [scope.userSelection.viewBy[0].type];
+            }
+          }
+
+          //filter Config.chartTypes accordingly
+          var relevantTypes = _.filter(Config.chartTypes, function(d) {            
+            var primaryDatatypeMatches = d.primaryDatatypes.indexOf(primaryDataType) >= 0;            
+            var secondaryDatatypesMatch = _.filter(d.secondaryDatatypes, function (dt) {
+              return _.isEqual(dt.sort(), secondaryDatatypes.sort());
+            }).length;
+            return primaryDatatypeMatches && secondaryDatatypesMatch;
+          });
+
+          scope.chartTypes = relevantTypes;
+          scope.userSelection.chartType = scope.chartTypes[0];
+
         };
 
         //initial config
         if(scope.initConfig.pivotDim){
-          scope.showMe(scope.initConfig.pivotDim);
-        }
-
-
-        // INTERACTION WITH D3 MODULES
-        // ---------------------------------------------------
-        var svg = element[0].querySelector('svg');
-        var chart = new $window.CHARTS(svg);
-        var data = dimensions.District.groupOn();
-        chart.constants.bubles.circles.setup(data, 'key');
+          scope.changeShowMe(scope.initConfig.pivotDim);
+        }        
 
       }
     };

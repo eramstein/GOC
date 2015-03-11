@@ -4,5 +4,6 @@ BUBLES
 
 .buble{
     stroke-width: 0.5;
-    stroke-opacity: 0.5;
+    stroke: #333333;
+    fill-opacity: 0.5;
 }

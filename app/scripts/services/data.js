@@ -18,12 +18,15 @@
         name: the attribute's key in the source data ('price', 'country')
         scaleType: 'ordinal' or 'quantitative'
         dataType: 'text', 'number' or 'date'
+        hasUniqueValues: true if this is an ordinal dimension which has unique values for each record in the dataset
 
         groupOn(): creates a group of distinct values for that dimension (discretizes it if needed), and aggregates values of other dimensions passed as an array param
                    if no param passed, returns number of record per group in the dimension. as a consequence, groupOn().length is the number of distinct values                   
                    input:  [{'name': dimension.name, 'aggregator': 'sum' or 'avg' or 'countUniques' or 'none'}]
                            e.g. [{'name': 'GDP', 'aggregator': 'sum'}, {'name': 'Life Expectancy', 'aggregator': 'avg'}]
                    output: [{'continent': 'Europe', 'GDP': 1000, 'Life Expectancy': 80}]
+
+        groupOnAndAggAll(): same as groupOn(), but automatically aggergates on all other dimensions with all possible aggregator methods
 
         aggregateOver(): aggregates values of that dimension. other dimensions can be used to group the data into categories, up to 2 dimensions
                          the first dimension to group on can be quantitative, in this case it gets discretized
@@ -162,6 +165,7 @@ angular.module('gocApp')
         this._cfDim = _cf.dimension(function(d) {
             return d[key];
         });
+        this.hasUniqueValues = this.scaleType === 'ordinal' && this._cfDim.group().size() === _cf.size();
     }
 
     //filters for a [min, max] range
@@ -180,7 +184,26 @@ angular.module('gocApp')
             return values.indexOf(d) + 1;
         });
     };
-    
+
+    //create groups on that dimension and aggregate all other dimensions with all types of aggregations methods
+    Dimension.prototype.groupOnAndAggAll = function() {
+        var _dim = this;
+        var dimsToAgg = [];
+        _.forEach(_this.dimensions, function(dim) {
+            if(_dim.name !== dim.name){
+                if(dim.dataType === 'text'){
+                    dimsToAgg.push({'name': dim.name, 'aggregator': 'none'});
+                }
+                if(dim.dataType === 'number'){
+                    dimsToAgg.push({'name': dim.name, 'aggregator': 'sum'});
+                    dimsToAgg.push({'name': dim.name, 'aggregator': 'avg'});
+                }
+            }      
+        });
+
+        return _dim.groupOn(dimsToAgg);
+    };
+
     //create groups on that dimension and aggregate other dimensions on these groups - e.g. for continents, give me sum of GDP and avg of life expectancy
     Dimension.prototype.groupOn = function(dimsToAgg) {
         var _dim = this;
@@ -359,7 +382,7 @@ angular.module('gocApp')
                     tempString += 'p.' + dim.name + '_avg= p._sum_' + dim.name + ' / p._count_' + dim.name + ';';
                 }
                 if (dim.aggregator === 'none') {
-                    tempString += 'p.' + dim.name + '_sum=v.' + dim.name + ';';
+                    tempString += 'p.' + dim.name + '=v.' + dim.name + ';';
                 }
                 if (dim.aggregator === 'countUniques') {
                     //we maintain a counter of how many time each value appears, so that the reduceRemove function nows if the last one got removed

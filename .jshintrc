@@ -25,6 +25,7 @@
     "crossfilter": false,
     "CHARTS_CONSTRUCTORS": false,
     "CHARTS_CONFIG": false,
+    "CHARTS_UTILS": false,
     "_": false
   }
 }
