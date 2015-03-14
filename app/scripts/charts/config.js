@@ -4,7 +4,8 @@
 
 var CHARTS_CONFIG = {
     'transitionTime':750,
-    'aspectRatio': [960, 500] //TODO: this is hardcoed in the chart directive HTML template SVG element. Angular doesn't support viewBox well    
+    'aspectRatio': [960, 500], //TODO: this is hardcoed in the chart directive HTML template SVG element. Angular doesn't support viewBox well   
+    'bubleSize': {'default': 10, 'min': 1, 'max': 30}
 };
 
 //some redundancy for sugar

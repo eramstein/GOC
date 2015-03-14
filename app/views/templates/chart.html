@@ -136,8 +136,8 @@
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu">
-      <li ng-click="userSelection.sizeBy=null"><a href="#">---</a></li>
-      <li ng-repeat="dim in showMeDims.number" ng-click="userSelection.sizeBy=dim"><a href="#">{{dim}}</a></li>
+      <li ng-click="changeSizeBy(null)"><a href="#">---</a></li>
+      <li ng-repeat="dim in showMeDims.number" ng-click="changeSizeBy(dim)"><a href="#">{{dim}}</a></li>
     </ul>
   </div>
 </div>
@@ -161,12 +161,18 @@
 
 
 <!-- SVG -->
-<div style="clear:both" class="svg-container fullsize">
+
+<div class="svg-container fullheight">
   <!-- the 960/500 ratio will get preserved when resizing the chart -->
   <svg 
-    width="960" 
-    height="500"
     viewBox="0 0 960 500"
     perserveAspectRatio="xMinYMin">
   </svg>
+</div>
+
+
+<!-- LEGEND -->
+
+<div class="legend-container">
+  <svg class="legend"></svg>
 </div>

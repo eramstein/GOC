@@ -17,7 +17,8 @@
             remove()
         },
         other chart types...
-    }
+    }  
+    
 */
 
 /*global CHARTS: true*/
@@ -25,12 +26,15 @@
 
 
 var CHARTS = function(svg) {
+    
     this.svg = svg;
+
     this.constants = {
         'bubles': new CHARTS_CONSTRUCTORS.ConstantsBubles(svg)
     };
 
-    this.baloons = new CHARTS_CONSTRUCTORS.Baloons(svg);
+    this.baloons = new CHARTS_CONSTRUCTORS.Baloons(this);
 };
 
+//CHARTS_CONSTRUCTORS are functions to draw chart elements
 var CHARTS_CONSTRUCTORS = {};

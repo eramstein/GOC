@@ -42,7 +42,7 @@ angular.module('gocApp')
             if(previousChart.chartTypeName) {
               //if the previous dim was text, clear old bubles
               if(previousChart.showMe.type === 'text') {
-                chart.constants.bubles.update([], showMe.dim);
+                chart.constants.bubles.makeNew([], showMe.dim);
               }
 
               //if the previous dim was number, clear old paths
@@ -50,14 +50,13 @@ angular.module('gocApp')
                 // TODO
               }
               
-              chart[previousChart.chartTypeName].clear(data);
-            }
-            
+              chart[previousChart.chartTypeName].clear();
+            }            
 
             //if the new dim is text, create new bubles
             if(showMe.type === 'text') {
               data = dimensions[showMe.dim].groupOnAndAggAll();
-              chart.constants.bubles.update(data, showMe.dim);
+              chart.constants.bubles.makeNew(data, showMe.dim);
               chart[scope.userSelection.chartType.name].build();
               chart[scope.userSelection.chartType.name].update(data, []);
             }
@@ -71,6 +70,7 @@ angular.module('gocApp')
 
           //update previousChart
           previousChart.showMe = showMe;
+          previousChart.chartTypeName = scope.userSelection.chartType.name;
         };
 
         chart.viewByChanged = function () {
@@ -87,7 +87,8 @@ angular.module('gocApp')
         };
 
         chart.sizeByChanged = function () {
-
+          chart.constants.bubles.changeSize(scope.userSelection.sizeBy);
+          chart[scope.userSelection.chartType.name].onResize();
         };
 
         // ------------------------------------------------------------------------------------------------
@@ -117,12 +118,12 @@ angular.module('gocApp')
           if(dimensions[dim].dataType === 'number' && !scope.userSelection.showMe.agg){
             scope.userSelection.showMe.agg = 'sum';
           }
-          //clear all other userSelection
-          scope.userSelection.viewBy = [];
-          scope.userSelection.colorBy = null;
-          scope.userSelection.sizeBy = null;
           //reset chart types dropdown
           scope.refreshAvailableChartTypes();
+          //clear all other userSelection
+          scope.userSelection.viewBy = [];
+          scope.changeColorBy(null);
+          scope.changeSizeBy(null);          
           //tell the chart
           chart.showMeChanged();
         };
@@ -142,6 +143,20 @@ angular.module('gocApp')
 
         scope.changeChartType = function (chartType) {
           scope.userSelection.chartType = chartType;
+        };
+
+        scope.changeColorBy = function (dim) {
+          if(dim !== scope.userSelection.colorBy){
+            scope.userSelection.colorBy = dim;
+            chart.colorByChanged();
+          }
+        };
+
+        scope.changeSizeBy = function (dim) {
+          if(dim !== scope.userSelection.sizeBy){
+            scope.userSelection.sizeBy = dim;
+            chart.sizeByChanged();
+          }          
         };
 
         //find which chart types are relevant based on the currently selected showMe (primaryDataType) and viewBy (secondaryDatatypes)

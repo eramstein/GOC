@@ -2,8 +2,18 @@
 BUBLES
 */
 
-.buble{
+.buble, .buble-being-removed{
     stroke-width: 0.5;
     stroke: #333333;
     fill-opacity: 0.5;
+}
+
+/*
+BALOONS
+*/
+
+.baloon-center-label{
+    font-size: 18px;
+    fill: #777;
+    text-anchor: middle;
 }

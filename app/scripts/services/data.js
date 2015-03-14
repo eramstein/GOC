@@ -5,7 +5,7 @@
     ---------------------------------------------------
 
     Data.prepareData(data: array of objects)
-    - checks and cleans data
+    - checks and cleans data    
     - builds Data.dimensions. each attribute in the data objects becomes a dimension.
 
     Data.getRecordCount()
@@ -51,7 +51,7 @@
 */
 
 angular.module('gocApp')
-  .service('Data', function Data() {    
+  .service('Data', function Data($window) {    
 
     // PUBLIC
     // ---------------------------------------------------

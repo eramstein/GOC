@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"seco",
+				"secondaryDatatypesProp"
+			],
+			[
 				"text",
 				"text-decoration"
 			],
@@ -56,18 +60,50 @@
 	"buffers":
 	[
 		{
-			"file": "scripts/charts/chartModule.js",
+			"file": "scripts/directives/chart.js",
 			"settings":
 			{
-				"buffer_size": 828,
-				"line_ending": "Windows"
+				"buffer_size": 7316,
+				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "scripts/charts/constantsBubles.js",
 			"settings":
 			{
-				"buffer_size": 1000,
+				"buffer_size": 2643,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "scripts/charts/utils.js",
+			"settings":
+			{
+				"buffer_size": 867,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "views/templates/chart.html",
+			"settings":
+			{
+				"buffer_size": 6722,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "scripts/charts/baloons.js",
+			"settings":
+			{
+				"buffer_size": 7189,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "scripts/charts/chartModule.js",
+			"settings":
+			{
+				"buffer_size": 888,
 				"line_ending": "Windows"
 			}
 		},
@@ -75,7 +111,7 @@
 			"file": "scripts/charts/config.js",
 			"settings":
 			{
-				"buffer_size": 97,
+				"buffer_size": 432,
 				"line_ending": "Windows"
 			}
 		},
@@ -83,39 +119,31 @@
 			"file": "styles/charts.css",
 			"settings":
 			{
-				"buffer_size": 71,
+				"buffer_size": 214,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/C/Users/Etienne/Desktop/Old Stuff/Bubbles/commonChartElements.js",
+			"file": "styles/main.css",
 			"settings":
 			{
-				"buffer_size": 6709,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "scripts/directives/chart.js",
-			"settings":
-			{
-				"buffer_size": 2067,
+				"buffer_size": 1848,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/templates/chart.html",
+			"file": "scripts/services/data.js",
 			"settings":
 			{
-				"buffer_size": 6026,
-				"line_ending": "Windows"
+				"buffer_size": 25397,
+				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "/C/Users/Etienne/Desktop/GOC/.jshintrc",
 			"settings":
 			{
-				"buffer_size": 539,
+				"buffer_size": 566,
 				"line_ending": "Unix"
 			}
 		}
@@ -188,28 +216,36 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/commonChartElements.js",
+		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/bublechart.js",
 		"/C/Users/Etienne/Desktop/GOC/.jshintrc",
+		"/C/Users/Etienne/Desktop/GOC/app/styles/main.css",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/baloons - Copie.js",
 		"/C/Users/Etienne/Desktop/GOC/app/index.html",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/services/data.js",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/chartModule.js",
+		"/C/Users/Etienne/Desktop/GOC/app/styles/charts.css",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/controllers/main.js",
+		"/C/Users/Etienne/Desktop/GOC/app/views/menu.html",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/config.js",
+		"/C/Users/Etienne/Desktop/test.html",
+		"/C/Users/Etienne/Desktop/GOC/app/views/charts.html",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/services/config.js",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/services/chartsmanager.js",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/controllers/startup.js",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/constantsBubles.js",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/directives/chart.js",
+		"/C/Users/Etienne/Desktop/GOC/app/views/templates/chart.html",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/chartCommons.js",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/chartCommonsBubles.js",
-		"/C/Users/Etienne/Desktop/GOC/app/styles/main.css",
-		"/C/Users/Etienne/Desktop/GOC/app/views/templates/chart.html",
-		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/chartModule.js",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/scatterplot.js",
-		"/C/Users/Etienne/Desktop/GOC/app/scripts/directives/chart.js",
-		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/commonChartElements.js",
 		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/scatterplot.js",
 		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/dashboard.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/mobs.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/setup.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/main.js",
 		"/C/Users/Etienne/Desktop/GOC/app/views/main.html",
-		"/C/Users/Etienne/Desktop/GOC/app/views/charts.html",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/controllers/charts.js",
-		"/C/Users/Etienne/Desktop/GOC/app/scripts/services/chartsmanager.js",
-		"/C/Users/Etienne/Desktop/GOC/app/scripts/services/data.js",
-		"/C/Users/Etienne/Desktop/GOC/app/scripts/controllers/startup.js",
-		"/C/Users/Etienne/Desktop/GOC/app/scripts/controllers/main.js",
 		"/C/Users/Etienne/Desktop/GOC/app/views/templates/dimensionSummary.html",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/directives/dimensionsummary.js",
 		"/C/Users/Etienne/Desktop/GOC/app/views/startup.html",
@@ -220,14 +256,12 @@
 		"/C/Users/Etienne/Desktop/GOC/app/views/templates/filterHandler.html",
 		"/C/Users/Etienne/Desktop/GOC/Gruntfile.js",
 		"/C/Users/Etienne/Desktop/GOC/test/spec/services/data.js",
-		"/C/Users/Etienne/Desktop/test.html",
 		"/C/Users/Etienne/Desktop/GOC_backup/scripts/services/_bk_data_more_generic.js",
 		"/C/Users/Etienne/Desktop/GOC_backup/scripts/services/data.js",
 		"/C/Users/Etienne/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 		"/C/Users/Etienne/Desktop/PythonTuto/python_basics/helloWorld.py",
 		"/C/Users/Etienne/Desktop/PythonTuto/python_basics/foreach.py",
 		"/C/Users/Etienne/Desktop/GOC/app/views/filters.html",
-		"/C/Users/Etienne/Desktop/GOC/app/views/menu.html",
 		"/C/Users/Etienne/Desktop/GOC/app/views/options.html",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/app.js",
 		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/dashboard.html",
@@ -309,13 +343,7 @@
 		"/C/Users/Etienne/Desktop/FDA/.jshintrc",
 		"/C/Users/Etienne/Desktop/FDA/app/bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
 		"/C/Users/Etienne/Desktop/FDA/bower.json",
-		"/C/Users/Etienne/Desktop/Old Stuff/Mongoose/test.html",
-		"/C/Users/Etienne/Desktop/SQ Firebase/app/views/play/board.html",
-		"/C/Users/Etienne/Desktop/SQ Firebase/app/js/directives/brave.js",
-		"/C/Users/Etienne/Desktop/SQ Firebase/app/js/services/gameservice.js",
-		"/C/Users/Etienne/Desktop/bubules/app/views/list.html",
-		"/C/Users/Etienne/Desktop/bubules/app/views/main.html",
-		"/C/Users/Etienne/Desktop/bubules/app/scripts/controllers/list.js"
+		"/C/Users/Etienne/Desktop/Old Stuff/Mongoose/test.html"
 	],
 	"find":
 	{
@@ -323,9 +351,10 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 90.0,
 		"where_history":
 		[
+			"C:\\Users\\Etienne\\Desktop\\GOC\\app",
 			"C:\\Users\\Etienne\\Desktop\\TheGame\\app",
 			"C:\\Users\\Etienne\\Desktop\\Wiki",
 			"C:\\Users\\Etienne\\Desktop\\SQ Firebase\\app",
@@ -338,6 +367,105 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"sizeByChanged",
+			"changeSize",
+			"resizeNodes",
+			"changeSize",
+			" - 1",
+			"dimSize",
+			"CHARTS_UTILS.getStats(_data, dim)",
+			"changeSize",
+			"Infinity",
+			"dim",
+			"group",
+			"dim._cfDim",
+			"data",
+			"baloonCenterLabel",
+			"makeNew",
+			"chartType",
+			"previousChart.chartTypeName",
+			"chartTypeName",
+			".data",
+			"d[key]",
+			"bubles.update",
+			"this.sizeScale",
+			"sizeScale",
+			"svg",
+			"value",
+			"data",
+			"sizeScale",
+			"d.__data__",
+			"data",
+			"clear",
+			"sizeByChanged",
+			"sizeScale",
+			"resizeNodes",
+			"chartType",
+			"forceLayoutLabel",
+			"\"",
+			"uniqueValues",
+			"getUniqueValues",
+			"var ",
+			"yCount",
+			"xCount",
+			"aspectRatio[1]",
+			"aspectRatio[0]",
+			"all",
+			"aspectRatio",
+			"960",
+			"chart",
+			"force",
+			"layoutConfig",
+			"10000",
+			"forceSartedOn",
+			"_this.force",
+			";",
+			"_this",
+			" =",
+			"this.",
+			"layoutGravity",
+			"_this",
+			"\"",
+			"bubble",
+			"_this",
+			"Node",
+			"node",
+			"charge",
+			"startForce",
+			"createForce",
+			"\"",
+			"nodes",
+			"nodes_all",
+			"centers",
+			"force",
+			"dots",
+			"this",
+			"\"",
+			"x",
+			"diameter",
+			"none",
+			"_setGroups",
+			"circles",
+			"75px",
+			"r",
+			"'10'",
+			"[]",
+			"dim",
+			"viewBy",
+			"setChartTypes",
+			"dataType",
+			"uniqueValues",
+			"isLeaf",
+			"posBy",
+			"[secondaryDatatypesProp]",
+			"posBy",
+			"sliceBy",
+			"secondaryDatatypeMatches",
+			"primaryType",
+			"quantitative",
+			"ordinal",
+			"Scale",
+			"primaryScaleTypes",
 			"circles",
 			"color",
 			"false",
@@ -366,106 +494,7 @@
 			" tabindex=\"-1\"",
 			" role=\"presentation\"",
 			" role=\"menuitem\"",
-			" role=\"menu\"",
-			"text",
-			"[]",
-			"config",
-			"btn-default",
-			"danger",
-			"startup",
-			"testData",
-			"span",
-			"'Name'",
-			"span",
-			"div",
-			"_this.",
-			"size",
-			"$scope",
-			"data",
-			"'Surface'",
-			"_setGroupAll",
-			"dataType",
-			"type",
-			"Type",
-			"type",
-			"quantDate",
-			"nominal",
-			"quantDate",
-			"quantNum",
-			"nominal",
-			"loadData",
-			"\"",
-			"loadDataFromFile",
-			"this",
-			"_dim",
-			"_setGroupAll",
-			"aggregateOver",
-			"_setGroups",
-			"_dim",
-			"dimToGroup._groupedBy",
-			"_dim",
-			"uniquesCount",
-			"aggregator",
-			"aggregateOverTwoDims",
-			"_uniqueValuesCount",
-			"value",
-			"sum",
-			"count",
-			"_count_",
-			"_uniqueValuesCount",
-			"dim",
-			"_aggregateOverTwoNominalDims",
-			"_dim",
-			"newVal",
-			"values",
-			"d",
-			"efficient",
-			"this",
-			"avg",
-			"//",
-			"groupBy",
-			"_groupBy",
-			"dim",
-			"buildGroups",
-			"_setGroupsAndReduce",
-			"_setGroupAll",
-			"aggregateOver",
-			"_setGroupsAndReduce",
-			"_setGroupN",
-			"_groupOverTwoNominalDims",
-			"_setGroupQN",
-			"_' + dim.name",
-			"_dim",
-			"._cfDim",
-			"dimsN[1]",
-			"dimQ",
-			"cfDim",
-			"cfGroup",
-			"_dim.groupBy",
-			"getValuesQN",
-			"getValuesN",
-			"p._sum",
-			"p._count",
-			"p._uniqueValuesCount",
-			"d.",
-			"countUniques",
-			"d.project",
-			"projects",
-			"cfGroup",
-			"nominal",
-			"groupBy",
-			"_sourceData",
-			"Taxes",
-			"'Garden': '0'",
-			"Garden",
-			"Surface",
-			"this",
-			"forEach",
-			"angular.forEach",
-			"_dims",
-			"dimensions",
-			"_sourceData",
-			"type"
+			" role=\"menu\""
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -473,6 +502,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"baloon-center-label",
 			"'",
 			"update",
 			"mob",
@@ -508,29 +538,29 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 4,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "scripts/charts/chartModule.js",
+					"file": "scripts/directives/chart.js",
 					"settings":
 					{
-						"buffer_size": 828,
+						"buffer_size": 7316,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								787,
-								787
+								5534,
+								5534
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -544,21 +574,21 @@
 					"file": "scripts/charts/constantsBubles.js",
 					"settings":
 					{
-						"buffer_size": 1000,
+						"buffer_size": 2643,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								879,
-								879
+								1007,
+								1007
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -569,18 +599,18 @@
 				},
 				{
 					"buffer": 2,
-					"file": "scripts/charts/config.js",
+					"file": "scripts/charts/utils.js",
 					"settings":
 					{
-						"buffer_size": 97,
+						"buffer_size": 867,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								14,
-								14
+								431,
+								431
 							]
 						],
 						"settings":
@@ -595,18 +625,128 @@
 				},
 				{
 					"buffer": 3,
-					"file": "styles/charts.css",
+					"file": "views/templates/chart.html",
 					"settings":
 					{
-						"buffer_size": 71,
+						"buffer_size": 6722,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								63,
-								63
+								5802,
+								5802
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1523.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "scripts/charts/baloons.js",
+					"settings":
+					{
+						"buffer_size": 7189,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5105,
+								5112
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 406.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "scripts/charts/chartModule.js",
+					"settings":
+					{
+						"buffer_size": 888,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								585,
+								585
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "scripts/charts/config.js",
+					"settings":
+					{
+						"buffer_size": 432,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								282,
+								282
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "styles/charts.css",
+					"settings":
+					{
+						"buffer_size": 214,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								149,
+								149
 							]
 						],
 						"settings":
@@ -620,103 +760,75 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "/C/Users/Etienne/Desktop/Old Stuff/Bubbles/commonChartElements.js",
+					"buffer": 8,
+					"file": "styles/main.css",
 					"settings":
 					{
-						"buffer_size": 6709,
+						"buffer_size": 1848,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1602,
-								1612
+								687,
+								687
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "scripts/services/data.js",
+					"settings":
+					{
+						"buffer_size": 25397,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11359,
+								11538
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 454.0,
+						"translation.y": 4310.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "scripts/directives/chart.js",
-					"settings":
-					{
-						"buffer_size": 2067,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2041,
-								2041
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 123.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "views/templates/chart.html",
-					"settings":
-					{
-						"buffer_size": 6026,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6026,
-								6026
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1852.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
+					"buffer": 10,
 					"file": "/C/Users/Etienne/Desktop/GOC/.jshintrc",
 					"settings":
 					{
-						"buffer_size": 539,
+						"buffer_size": 566,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								455,
-								517
+								544,
+								544
 							]
 						],
 						"settings":
