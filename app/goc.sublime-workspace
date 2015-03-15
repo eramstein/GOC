@@ -63,7 +63,7 @@
 			"file": "scripts/directives/chart.js",
 			"settings":
 			{
-				"buffer_size": 7316,
+				"buffer_size": 7390,
 				"line_ending": "Unix"
 			}
 		},
@@ -71,7 +71,7 @@
 			"file": "scripts/charts/constantsBubles.js",
 			"settings":
 			{
-				"buffer_size": 2643,
+				"buffer_size": 5352,
 				"line_ending": "Windows"
 			}
 		},
@@ -79,7 +79,7 @@
 			"file": "scripts/charts/utils.js",
 			"settings":
 			{
-				"buffer_size": 867,
+				"buffer_size": 989,
 				"line_ending": "Windows"
 			}
 		},
@@ -87,15 +87,23 @@
 			"file": "views/templates/chart.html",
 			"settings":
 			{
-				"buffer_size": 6722,
+				"buffer_size": 6743,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "styles/main.css",
+			"settings":
+			{
+				"buffer_size": 2184,
+				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "scripts/charts/baloons.js",
 			"settings":
 			{
-				"buffer_size": 7189,
+				"buffer_size": 7210,
 				"line_ending": "Windows"
 			}
 		},
@@ -111,7 +119,7 @@
 			"file": "scripts/charts/config.js",
 			"settings":
 			{
-				"buffer_size": 432,
+				"buffer_size": 622,
 				"line_ending": "Windows"
 			}
 		},
@@ -124,26 +132,10 @@
 			}
 		},
 		{
-			"file": "styles/main.css",
-			"settings":
-			{
-				"buffer_size": 1848,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "scripts/services/data.js",
 			"settings":
 			{
 				"buffer_size": 25397,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/C/Users/Etienne/Desktop/GOC/.jshintrc",
-			"settings":
-			{
-				"buffer_size": 566,
 				"line_ending": "Unix"
 			}
 		}
@@ -216,9 +208,9 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Etienne/Desktop/GOC/.jshintrc",
 		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/commonChartElements.js",
 		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/bublechart.js",
-		"/C/Users/Etienne/Desktop/GOC/.jshintrc",
 		"/C/Users/Etienne/Desktop/GOC/app/styles/main.css",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/baloons - Copie.js",
 		"/C/Users/Etienne/Desktop/GOC/app/index.html",
@@ -351,7 +343,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 90.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"C:\\Users\\Etienne\\Desktop\\GOC\\app",
@@ -367,6 +359,16 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"changeColorBy",
+			"colorByChanged",
+			"#",
+			"9E0041",
+			"5",
+			"circle",
+			"cx",
+			"cy",
+			"circle buble",
+			".attr('class', 'size-legend-circle buble')",
 			"sizeByChanged",
 			"changeSize",
 			"resizeNodes",
@@ -484,17 +486,7 @@
 			"spreadOver",
 			"colorBy",
 			"0",
-			"userSelection.showMe",
-			"scope.",
-			"sum",
-			"Data.dimensions",
-			"Data.dimensions,",
-			"i",
-			"icon-arrow-up",
-			" tabindex=\"-1\"",
-			" role=\"presentation\"",
-			" role=\"menuitem\"",
-			" role=\"menu\""
+			"userSelection.showMe"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -538,7 +530,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -546,15 +538,19 @@
 					"file": "scripts/directives/chart.js",
 					"settings":
 					{
-						"buffer_size": 7316,
+						"buffer_size": 7390,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5534,
-								5534
+								4787,
+								4800
+							],
+							[
+								5527,
+								5540
 							]
 						],
 						"settings":
@@ -564,7 +560,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1801.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -574,15 +570,15 @@
 					"file": "scripts/charts/constantsBubles.js",
 					"settings":
 					{
-						"buffer_size": 2643,
+						"buffer_size": 5352,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1007,
-								1007
+								3551,
+								3551
 							]
 						],
 						"settings":
@@ -592,7 +588,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 681.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -602,20 +598,22 @@
 					"file": "scripts/charts/utils.js",
 					"settings":
 					{
-						"buffer_size": 867,
+						"buffer_size": 989,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								431,
-								431
+								952,
+								952
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -628,15 +626,15 @@
 					"file": "views/templates/chart.html",
 					"settings":
 					{
-						"buffer_size": 6722,
+						"buffer_size": 6743,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5802,
-								5802
+								5311,
+								5311
 							]
 						],
 						"settings":
@@ -646,25 +644,53 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1523.0,
+						"translation.y": 1433.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "scripts/charts/baloons.js",
+					"file": "styles/main.css",
 					"settings":
 					{
-						"buffer_size": 7189,
+						"buffer_size": 2184,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5105,
-								5112
+								1052,
+								1052
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 263.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "scripts/charts/baloons.js",
+					"settings":
+					{
+						"buffer_size": 7210,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6735,
+								6735
 							]
 						],
 						"settings":
@@ -674,13 +700,13 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 406.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "scripts/charts/chartModule.js",
 					"settings":
 					{
@@ -708,19 +734,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "scripts/charts/config.js",
 					"settings":
 					{
-						"buffer_size": 432,
+						"buffer_size": 622,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								282,
-								282
+								301,
+								312
 							]
 						],
 						"settings":
@@ -734,7 +760,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 8,
 					"file": "styles/charts.css",
 					"settings":
 					{
@@ -745,41 +771,13 @@
 						"selection":
 						[
 							[
-								149,
-								149
+								109,
+								109
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/CSS/CSS.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "styles/main.css",
-					"settings":
-					{
-						"buffer_size": 1848,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								687,
-								687
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -811,34 +809,6 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 4310.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "/C/Users/Etienne/Desktop/GOC/.jshintrc",
-					"settings":
-					{
-						"buffer_size": 566,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								544,
-								544
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

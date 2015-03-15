@@ -23,5 +23,9 @@ var CHARTS_UTILS = {
             'Q1': sorted[q1Pos],
             'Q3': sorted[q3Pos]
         };
+    },
+
+    getDistinctValues: function(data, dim){        
+        return _(data).pluck(dim).uniq().value();
     }
 };

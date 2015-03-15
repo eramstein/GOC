@@ -1,11 +1,27 @@
 /*
-BUBLES
+BUBLES & LEGEND
 */
 
 .buble, .buble-being-removed{
     stroke-width: 0.5;
-    stroke: #333333;
-    fill-opacity: 0.5;
+    stroke: #333333;    
+}
+
+.color-legend-rect, .buble{
+    fill-opacity: 0.6;
+}
+
+.size-legend-circle{
+    fill:white;
+}
+
+.size-legend-text{
+    text-anchor: middle;
+}
+
+.size-legend-text, .color-legend-text, .color-gradient-text{
+    font-size: 12px;
+    fill: #444444;
 }
 
 /*

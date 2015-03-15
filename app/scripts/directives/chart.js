@@ -82,8 +82,8 @@ angular.module('gocApp')
 
         };
 
-        chart.colorByChanged = function () {
-
+        chart.colorByChanged = function () {          
+          chart.constants.bubles.changeColor(scope.userSelection.colorBy, dimensions[scope.userSelection.colorBy].dataType);
         };
 
         chart.sizeByChanged = function () {

@@ -22,7 +22,7 @@ body {
 }
 
 /***************************************************
-        CHART 
+        CHART
 ***************************************************/
 
 chart .chart-config-block, chart .help-text, chart .dropdown{
@@ -48,23 +48,13 @@ chart svg{
 chart .legend-container{
     float:left;
     width:99px;
-    height:100%;
+    height:100vh;
 }
 
 chart .legend-container svg{
     width:100%;
     height:100%;
     padding-top: 30px;
-}
-
-chart .size-legend-circle{
-    fill:white;
-}
-
-chart .size-legend-text{
-    text-anchor: middle;
-    font-size: 12px;
-    fill: #444444;
 }
 
 /***************************************************

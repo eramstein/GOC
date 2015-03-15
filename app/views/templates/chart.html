@@ -117,9 +117,9 @@
     <ul class="dropdown-menu">
       <li ng-click="userSelection.colorBy=null"><a href="#">---</a></li>
       <li class="divider"></li>
-      <li ng-repeat="dim in showMeDims.text" ng-click="userSelection.colorBy=dim"><a href="#">{{dim}}</a></li>
+      <li ng-repeat="dim in showMeDims.text" ng-click="changeColorBy(dim)"><a href="#">{{dim}}</a></li>
       <li class="divider"></li>
-      <li ng-repeat="dim in showMeDims.number" ng-click="userSelection.colorBy=dim"><a href="#">{{dim}}</a></li>
+      <li ng-repeat="dim in showMeDims.number" ng-click="changeColorBy(dim)"><a href="#">{{dim}}</a></li>
     </ul>
   </div>
 </div>
