@@ -12,9 +12,4 @@ angular.module('gocApp')
             }
         };
 
-        $scope.resizeCharts = function () {
-            var chart = d3.select('.svg-container');
-            chart.style('width', '200px');
-        };
-
     });

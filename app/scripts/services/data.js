@@ -51,7 +51,7 @@
 */
 
 angular.module('gocApp')
-  .service('Data', function Data($window) {    
+  .service('Data', function Data() {    
 
     // PUBLIC
     // ---------------------------------------------------
@@ -161,6 +161,7 @@ angular.module('gocApp')
         this.scaleType = getType(key).scaleType;
         this.dataType = getType(key).dataType;
         this._groupedBy = null;
+        this._filteredBy = {'type': null};
         this._cfGroup = null;
         this._cfDim = _cf.dimension(function(d) {
             return d[key];
@@ -168,21 +169,35 @@ angular.module('gocApp')
         this.hasUniqueValues = this.scaleType === 'ordinal' && this._cfDim.group().size() === _cf.size();
     }
 
+    //resets filter range
+    Dimension.prototype.resetFilterRange = function() {
+        this._cfDim.filter();
+        this._filteredBy = {'type':'value', 'range': null};
+    };
+
     //filters for a [min, max] range
     Dimension.prototype.filterRange = function(range) {
+        range[1] += 0.00000000001; //crossfilter uses >= min and < max...
         this._cfDim.filterRange(range);
+        this._filteredBy = {'type':'range', 'range': range};
     };
 
     //filters for a specific value
     Dimension.prototype.filterForValue = function(value) {
         this._cfDim.filterExact(value);
+        this._filteredBy = {'type':'value', 'range': value};
     };
 
     //filters for an array of values
-    Dimension.prototype.filterForValues = function(values) {
-        this._cfDim.filterFunction(function (d) {
+    Dimension.prototype.filterForValues = function(values) {  
+        if(values.length > 0){
+           this._cfDim.filterFunction(function (d) {
             return values.indexOf(d) + 1;
-        });
+           }); 
+        } else {
+           this._cfDim.filter(null);
+        }
+        this._filteredBy = {'type':'values', 'range': values};
     };
 
     //create groups on that dimension and aggregate all other dimensions with all types of aggregations methods
@@ -206,38 +221,46 @@ angular.module('gocApp')
 
     //create groups on that dimension and aggregate other dimensions on these groups - e.g. for continents, give me sum of GDP and avg of life expectancy
     Dimension.prototype.groupOn = function(dimsToAgg) {
-        var _dim = this;
+        var _dim = this;     
+        var valuesForChart = [];   
+
         //create groups if needed
-        if(!_.isEqual(dimsToAgg, _dim._groupedBy)){
+        //if(!_.isEqual(dimsToAgg, _dim._groupedBy)){
             _dim._setGroups(dimsToAgg);
             _dim._groupedBy = dimsToAgg;
-        }
-        //fetch data from the groups
-        var values = _dim._cfGroup.all(); 
-        var valuesForChart = [];
+        //}
 
-        if(dimsToAgg){
+        if(dimsToAgg){            
+            
+            //fetch data from the groups
+            var values = _dim._cfGroup.all();            
+
             //transform the {key:"groupName", value: {dim1: val1, dim2: val2}} hash into an array usable by d3
             _.forEach(values, function(d) {
                 var newVal = {};
+                var ignore = false;
                 newVal[_dim.name] = d.key;
                 _.forEach(d.value, function(v, k) {
                     //ignore private attributes (e.g. temp stuff used while computing averages)
                     if(k.substr(0,1) !== '_'){
                         newVal[k] = v;
-                    }                
+                    }
+                    //ignore object if a count is set to 0 (it means its filtered out) 
+                    if(k.substr(0,6) === '_count' && v === 0){
+                        ignore = true;
+                    }            
                 });
                 //if empty, ignore that object
-                if(_.size(newVal) > 1){
+                if(_.size(newVal) > 1 && !ignore){
                     valuesForChart.push(newVal);
                 }            
             });
         } else {
             //if there was no grouping we directly get an array of key/value pairs, returning counts
-            valuesForChart = values;
+            valuesForChart = _dim._cfGroup.reduceCount().all();
         }
         
-        return valuesForChart;
+        return _.clone(valuesForChart);
     };
 
     //aggregate values of this dimension, split over 0 to 2 other dimensions groups - e.g. for price, sum it by country/product combinations
@@ -305,21 +328,46 @@ angular.module('gocApp')
             });
         }
 
-        return valuesForChart;
+        return _.clone(valuesForChart);
     };
 
     Dimension.prototype.getQuartiles = function() {
-        var dimSize = this._cfDim.top(Infinity).length;
-        var medPos = Math.floor(dimSize/2);
-        var q1Pos = Math.floor(3*dimSize/4);
-        var q3Pos = Math.floor(dimSize/4);
+        //TODO we clear and reset filter on this dim before getting the quartiles, there must be a more efficient way
+        // (reason: crossfilter dimension.top() applies filters on itself, which we dont want, and if we group() then it doesn't but returns data in an inconvenient way)
+        this._cfDim.filterAll();
+                
         var stats = {
-            'max': this._cfDim.top(1)[0][this.name],
-            'min': this._cfDim.bottom(1)[0][this.name],
-            'med': this._cfDim.top(Math.floor(medPos))[medPos-1][this.name],
-            'q1': this._cfDim.top(Math.floor(q1Pos))[q1Pos-1][this.name],
-            'q3': this._cfDim.top(Math.floor(q3Pos))[q3Pos-1][this.name]
+            'max': 0,
+            'min': 0,
+            'med': 0,
+            'q1': 0,
+            'q3': 0
         };
+
+        var dimSize = this._cfDim.top(Infinity).length;
+        var medPos = Math.max(Math.ceil(dimSize/2),1);
+        var q1Pos = Math.max(Math.ceil(3*dimSize/4),1);
+        var q3Pos = Math.max(Math.ceil(dimSize/4),1);
+        
+        if(this._cfDim.top(1)[0]){
+            stats = {
+                'max': this._cfDim.top(1)[0][this.name],
+                'min': this._cfDim.bottom(1)[0][this.name],
+                'med': this._cfDim.top(Math.ceil(medPos))[medPos-1][this.name],
+                'q1': this._cfDim.top(Math.ceil(q1Pos))[q1Pos-1][this.name],
+                'q3': this._cfDim.top(Math.ceil(q3Pos))[q3Pos-1][this.name]
+            };
+        }
+        if(this._filteredBy.type === 'range'){
+            this.filterRange(this._filteredBy.range);
+        }
+        if(this._filteredBy.type === 'value'){
+            this.filterForValue(this._filteredBy.value);
+        }
+        if(this._filteredBy.type === 'values'){
+            this.filterForValues(this._filteredBy.values);
+        }
+        
         return stats;
     };
 
@@ -357,6 +405,7 @@ angular.module('gocApp')
     //aggregates on the quantitative dimensions specified in the groupBy parameter [{name: dim1, aggregator: sum}]
     //aggregator can be sum, avg, countUniques, none (in that case it just returns the last found value - works fine if they are all the same)
     Dimension.prototype._setGroups = function(groupBy) {
+        
         var _dim = this;
         //build group
         if(_dim.scaleType === 'ordinal'){
@@ -524,17 +573,21 @@ angular.module('gocApp')
 // ---------------------------------------------------
 // TEST
 // ---------------------------------------------------
-// var testData = [{'Surface': '100', 'Price': '200000', 'District': 'Orangerie', 'Taxes': '500', 'Garden': '0', 'Category': 'Appartment', 'Name': 'App1'}, {'Surface': '120', 'Price': '200000', 'District': 'Gare', 'Taxes': '175', 'Garden': '0', 'Category': 'Appartment', 'Name': 'App2'}, {'Surface': '130', 'Price': '235000', 'District': 'Gare', 'Taxes': '192', 'Garden': '0', 'Category': 'Appartment', 'Name': 'App3'}, {'Surface': '150', 'Price': '210000', 'District': 'Gare', 'Taxes': '146', 'Garden': '0', 'Category': 'Appartment', 'Name': 'App4'}, {'Surface': '170', 'Price': '230000', 'District': 'Contades', 'Taxes': '135', 'Garden': '0', 'Category': 'Appartment', 'Name': 'App5'}, {'Surface': '180', 'Price': '240000', 'District': 'Gare', 'Taxes': '138', 'Garden': '0', 'Category': 'Appartment', 'Name': 'App6'}, {'Surface': '200', 'Price': '260000', 'District': 'Gare', 'Taxes': '130', 'Garden': '20', 'Category': 'Appartment', 'Name': 'App7'}, {'Surface': '250', 'Price': '290000', 'District': 'Orangerie', 'Taxes': '100', 'Garden': '300', 'Category': 'House', 'Name': 'App8'}, {'Surface': '280', 'Price': '300000', 'District': 'Gare', 'Taxes': '114', 'Garden': '200', 'Category': 'House', 'Name': 'App9'}, {'Surface': '300', 'Price': '340000', 'District': 'Contades', 'Taxes': '113', 'Garden': '20', 'Category': 'Appartment', 'Name': 'App10'}, {'Surface': '310', 'Price': '400000', 'District': 'Gare', 'Taxes': '129', 'Garden': '50', 'Category': 'Appartment', 'Name': 'App11'}, {'Surface': '350', 'Price': '410000', 'District': 'Gare', 'Taxes': '120', 'Garden': '100', 'Category': 'House', 'Name': 'App12'}, {'Surface': '300', 'Price': '420000', 'District': 'Gare', 'Taxes': '200', 'Garden': '0', 'Category': 'Appartment', 'Name': 'App13'}, {'Surface': '320', 'Price': '510000', 'District': 'Contades', 'Taxes': '275', 'Garden': '200', 'Category': 'House', 'Name': 'App14'}, {'Surface': '330', 'Price': '580000', 'District': 'Orangerie', 'Taxes': '293', 'Garden': '150', 'Category': 'Appartment', 'Name': 'App15'}, {'Surface': '350', 'Price': '500000', 'District': 'Gare', 'Taxes': '246', 'Garden': '0', 'Category': 'Appartment', 'Name': 'App16'}, {'Surface': '370', 'Price': '530000', 'District': 'Contades', 'Taxes': '235', 'Garden': '400', 'Category': 'House', 'Name': 'App17'}, {'Surface': '380', 'Price': '680000', 'District': 'Orangerie', 'Taxes': '338', 'Garden': '0', 'Category': 'Appartment', 'Name': 'App18'}, {'Surface': '400', 'Price': '660000', 'District': 'Gare', 'Taxes': '330', 'Garden': '20', 'Category': 'Appartment', 'Name': 'App19'}, {'Surface': '450', 'Price': '690000', 'District': 'Orangerie', 'Taxes': '380', 'Garden': '350', 'Category': 'House', 'Name': 'App20'}, {'Surface': '480', 'Price': '660000', 'District': 'Orangerie', 'Taxes': '342', 'Garden': '250', 'Category': 'House', 'Name': 'App21'}, {'Surface': '400', 'Price': '740000', 'District': 'Contades', 'Taxes': '313', 'Garden': '20', 'Category': 'Appartment', 'Name': 'App22'}, {'Surface': '510', 'Price': '780000', 'District': 'Orangerie', 'Taxes': '420', 'Garden': '50', 'Category': 'Appartment', 'Name': 'App23'}, {'Surface': '450', 'Price': '820000', 'District': 'Contades', 'Taxes': '410', 'Garden': '380', 'Category': 'House', 'Name': 'App24'}];
+ var testData = [{'Surface': '100', 'Price': '200000', 'District': 'Orangerie', 'Taxes': '500', 'Garden': '0', 'Category': 'Appartment', 'Name': 'App1'}, {'Surface': '120', 'Price': '200000', 'District': 'Gare', 'Taxes': '175', 'Garden': '0', 'Category': 'Appartment', 'Name': 'App2'}, {'Surface': '130', 'Price': '235000', 'District': 'Gare', 'Taxes': '192', 'Garden': '0', 'Category': 'Appartment', 'Name': 'App3'}, {'Surface': '150', 'Price': '210000', 'District': 'Gare', 'Taxes': '146', 'Garden': '0', 'Category': 'Appartment', 'Name': 'App4'}, {'Surface': '170', 'Price': '230000', 'District': 'Contades', 'Taxes': '135', 'Garden': '0', 'Category': 'Appartment', 'Name': 'App5'}, {'Surface': '180', 'Price': '240000', 'District': 'Gare', 'Taxes': '138', 'Garden': '0', 'Category': 'Appartment', 'Name': 'App6'}, {'Surface': '200', 'Price': '260000', 'District': 'Gare', 'Taxes': '130', 'Garden': '20', 'Category': 'Appartment', 'Name': 'App7'}, {'Surface': '250', 'Price': '290000', 'District': 'Orangerie', 'Taxes': '100', 'Garden': '300', 'Category': 'House', 'Name': 'App8'}, {'Surface': '280', 'Price': '300000', 'District': 'Gare', 'Taxes': '114', 'Garden': '200', 'Category': 'House', 'Name': 'App9'}, {'Surface': '300', 'Price': '340000', 'District': 'Contades', 'Taxes': '113', 'Garden': '20', 'Category': 'Appartment', 'Name': 'App10'}, {'Surface': '310', 'Price': '400000', 'District': 'Gare', 'Taxes': '129', 'Garden': '50', 'Category': 'Appartment', 'Name': 'App11'}, {'Surface': '350', 'Price': '410000', 'District': 'Gare', 'Taxes': '120', 'Garden': '100', 'Category': 'House', 'Name': 'App12'}, {'Surface': '300', 'Price': '420000', 'District': 'Gare', 'Taxes': '200', 'Garden': '0', 'Category': 'Appartment', 'Name': 'App13'}, {'Surface': '320', 'Price': '510000', 'District': 'Contades', 'Taxes': '275', 'Garden': '200', 'Category': 'House', 'Name': 'App14'}, {'Surface': '330', 'Price': '580000', 'District': 'Orangerie', 'Taxes': '293', 'Garden': '150', 'Category': 'Appartment', 'Name': 'App15'}, {'Surface': '350', 'Price': '500000', 'District': 'Gare', 'Taxes': '246', 'Garden': '0', 'Category': 'Appartment', 'Name': 'App16'}, {'Surface': '370', 'Price': '530000', 'District': 'Contades', 'Taxes': '235', 'Garden': '400', 'Category': 'House', 'Name': 'App17'}, {'Surface': '380', 'Price': '680000', 'District': 'Orangerie', 'Taxes': '338', 'Garden': '0', 'Category': 'Appartment', 'Name': 'App18'}, {'Surface': '400', 'Price': '660000', 'District': 'Gare', 'Taxes': '330', 'Garden': '20', 'Category': 'Appartment', 'Name': 'App19'}, {'Surface': '450', 'Price': '690000', 'District': 'Orangerie', 'Taxes': '380', 'Garden': '350', 'Category': 'House', 'Name': 'App20'}, {'Surface': '480', 'Price': '660000', 'District': 'Orangerie', 'Taxes': '342', 'Garden': '250', 'Category': 'House', 'Name': 'App21'}, {'Surface': '400', 'Price': '740000', 'District': 'Contades', 'Taxes': '313', 'Garden': '20', 'Category': 'Appartment', 'Name': 'App22'}, {'Surface': '510', 'Price': '780000', 'District': 'Orangerie', 'Taxes': '420', 'Garden': '50', 'Category': 'Appartment', 'Name': 'App23'}, {'Surface': '450', 'Price': '820000', 'District': 'Contades', 'Taxes': '410', 'Garden': '380', 'Category': 'House', 'Name': 'App24'}];
 // console.table(testData);
 
 // this.prepareData(testData);
 
-// this.dimensions.District.filterForValues(['Gare', 'Contades']);
-
+// console.table(this.dimensions.District.groupOn());
+// this.dimensions.Category.filterForValues(['Appartment']);
+// console.table(this.dimensions.District.groupOn());
 //console.log(this.dimensions.Surface.aggregateOver({dims: ['Taxes'], aggregator: 'sum'}));
 // console.log(this.dimensions.Surface.aggregateOver({dims: ['Category', 'District'], aggregator: 'sum'}));
 //  this.dimensions.District.filterForValues(['Orangerie', 'Contades']);
 // console.log(this.dimensions.Surface.aggregateOver({dims: ['Category', 'District'], aggregator: 'sum'}));
+// this.dimensions.Category.filterForValues(['Appartment']);
+
+// console.table(this.dimensions.Name.groupOnAndAggAll());
 
 //console.log(this.dimensions.District.groupOn([{name:'Price', aggregator:'avg'}, {name:'Taxes', aggregator:'avg'}, {name:'Surface', aggregator:'sum'}, {name:'Taxes', aggregator:'sum'}]));
 

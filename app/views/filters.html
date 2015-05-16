@@ -1,5 +1,18 @@
 <div ng-controller="FiltersCtrl">
 
-filters
+    <div ng-repeat="dim in textFewDims">
+        <filter-checkboxes dim="{{dim.name}}">
+        </filter-checkboxes>
+    </div>
+
+    <div ng-repeat="dim in textManyDims">
+        <filter-autocomplete dim="{{dim.name}}">
+        </filter-autocomplete>
+    </div>
+
+    <div ng-repeat="dim in numberDims">
+        <filter-boxplots dim="{{dim.name}}">
+        </filter-boxplots>
+    </div>
 
 </div>

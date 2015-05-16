@@ -7,7 +7,7 @@ BUBLES & LEGEND
     stroke: #333333;    
 }
 
-.color-legend-rect, .buble{
+.color-legend-rect, .buble, .bublebar{
     fill-opacity: 0.6;
 }
 
@@ -24,12 +24,39 @@ BUBLES & LEGEND
     fill: #444444;
 }
 
-/*
-BALOONS
-*/
-
-.baloon-center-label{
-    font-size: 18px;
+.text-dim-label{
+    font-size: 14px;
     fill: #777;
     text-anchor: middle;
+}
+
+/*
+BOXPLOTS & SCATTERPLOT
+*/
+
+.boxplot-y-axis text{
+    font-size: 10px;
+    text-anchor: end;
+}
+
+.boxplot-ydim-label{
+    font-size: 14px;
+    fill: #777;
+    text-anchor: end;
+}
+
+.boxplot-x-axis text{
+    font-size: 10px;
+    text-anchor: middle;
+}
+
+.boxplot-xdim-label{
+    font-size: 14px;
+    fill: #777;
+    text-anchor: end;
+}
+
+.scatterplot-gray-zone{
+    fill: #e1e1e1;
+    opacity: 0.3;
 }

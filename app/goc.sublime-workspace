@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"font",
+				"font-weight"
+			],
+			[
 				"seco",
 				"secondaryDatatypesProp"
 			],
@@ -14,10 +18,6 @@
 			[
 				"te",
 				"text-decoration"
-			],
-			[
-				"font",
-				"font-size"
 			],
 			[
 				"update",
@@ -60,74 +60,18 @@
 	"buffers":
 	[
 		{
-			"file": "scripts/directives/chart.js",
+			"file": "scripts/directives/filterboxplots.js",
 			"settings":
 			{
-				"buffer_size": 7390,
+				"buffer_size": 6596,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "scripts/charts/constantsBubles.js",
+			"file": "scripts/charts/scatterplot.js",
 			"settings":
 			{
-				"buffer_size": 5352,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "scripts/charts/utils.js",
-			"settings":
-			{
-				"buffer_size": 989,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "views/templates/chart.html",
-			"settings":
-			{
-				"buffer_size": 6743,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "styles/main.css",
-			"settings":
-			{
-				"buffer_size": 2184,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "scripts/charts/baloons.js",
-			"settings":
-			{
-				"buffer_size": 7210,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "scripts/charts/chartModule.js",
-			"settings":
-			{
-				"buffer_size": 888,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "scripts/charts/config.js",
-			"settings":
-			{
-				"buffer_size": 622,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "styles/charts.css",
-			"settings":
-			{
-				"buffer_size": 214,
+				"buffer_size": 10402,
 				"line_ending": "Windows"
 			}
 		},
@@ -135,7 +79,33 @@
 			"file": "scripts/services/data.js",
 			"settings":
 			{
-				"buffer_size": 25397,
+				"buffer_size": 27501,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "scripts/charts/constantsBubles.js",
+			"settings":
+			{
+				"buffer_size": 8687,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Searching 25 files for \"makeNew\" (case sensitive)\n\nC:\\Users\\Etienne\\Desktop\\GOC\\app\\scripts\\charts\\constantsBubles.js:\n  185  \n  186      //sets the enter() and exit() methods, update() will be implemented by each chart type specifically   \n  187:     this.makeNew = function (data, key) {\n  188  \n  189          _data = data;\n\nC:\\Users\\Etienne\\Desktop\\GOC\\app\\scripts\\directives\\chart.js:\n   44                //if the previous dim was text, clear old bubles\n   45                if(previousChart.showMe.type === 'text') {\n   46:                 chart.constants.bubles.makeNew([], showMe.dim);\n   47                }\n   48  \n   ..\n   58              if(showMe.type === 'text') {\n   59                data = dimensions[showMe.dim].groupOnAndAggAll();\n   60:               chart.constants.bubles.makeNew(data, showMe.dim);\n   61                chart[scope.userSelection.chartType.name].build();\n   62                chart[scope.userSelection.chartType.name].update(data, []);\n   ..\n  121                });\n  122                \n  123:               chart.constants.bubles.makeNew(data, scope.userSelection.showMe.dim);\n  124                \n  125                chart[scope.userSelection.chartType.name].update(data, scope.userSelection.viewBy);\n\n4 matches across 2 files\n",
+			"settings":
+			{
+				"buffer_size": 1272,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "scripts/directives/chart.js",
+			"settings":
+			{
+				"buffer_size": 9893,
 				"line_ending": "Unix"
 			}
 		}
@@ -208,31 +178,57 @@
 	},
 	"file_history":
 	[
-		"/C/Users/Etienne/Desktop/GOC/.jshintrc",
-		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/commonChartElements.js",
-		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/bublechart.js",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/scatterplot.js",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/directives/filterboxplots.js",
+		"/C/Users/Etienne/Desktop/GOC/app/views/templates/filterBoxplots.html",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/services/filtersmanager.js",
 		"/C/Users/Etienne/Desktop/GOC/app/styles/main.css",
-		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/baloons - Copie.js",
-		"/C/Users/Etienne/Desktop/GOC/app/index.html",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/services/data.js",
-		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/chartModule.js",
-		"/C/Users/Etienne/Desktop/GOC/app/styles/charts.css",
-		"/C/Users/Etienne/Desktop/GOC/app/scripts/controllers/main.js",
-		"/C/Users/Etienne/Desktop/GOC/app/views/menu.html",
-		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/config.js",
-		"/C/Users/Etienne/Desktop/test.html",
-		"/C/Users/Etienne/Desktop/GOC/app/views/charts.html",
-		"/C/Users/Etienne/Desktop/GOC/app/scripts/services/config.js",
-		"/C/Users/Etienne/Desktop/GOC/app/scripts/services/chartsmanager.js",
-		"/C/Users/Etienne/Desktop/GOC/app/scripts/controllers/startup.js",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/constantsBubles.js",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/directives/filtercheckboxes.js",
+		"/C/Users/Etienne/Desktop/Old Stuff/AdverseEvents/scripts/directives/chartLines.js",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/boxplots.js",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/directives/chart.js",
+		"/C/Users/Etienne/Desktop/test.html",
+		"/C/Users/Etienne/Desktop/Old Stuff/AdverseEvents/styles/charts.css",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/baloons.js",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/utils.js",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/config.js",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/bubleBars.js",
+		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/barchart.js",
+		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/dashboard.js",
+		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/commonChartElements.js",
+		"/C/Users/Etienne/Desktop/GOC/app/views/filters.html",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/controllers/filters.js",
+		"/C/Users/Etienne/Desktop/GOC/app/views/templates/filterCheckboxes.html",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/services/chartsmanager.js",
+		"/C/Users/Etienne/Desktop/Old Stuff/AdverseEvents/scripts/directives/chartBarpie.js",
+		"/C/Users/Etienne/Desktop/Old Stuff/GOC/app/scripts/services/filtersmanager.js",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/services/config.js",
+		"/C/Users/Etienne/Desktop/GOC/app/views/menu.html",
 		"/C/Users/Etienne/Desktop/GOC/app/views/templates/chart.html",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/controllers/startup.js",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/controllers/main.js",
+		"/C/Users/Etienne/Desktop/GOC/app/index.html",
+		"/C/Users/Etienne/Desktop/GOC/app/styles/charts.css",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/chartModule.js",
+		"/C/Users/Etienne/Desktop/GOC/.jshintrc",
+		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/scatterplot.js",
+		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/common.css",
+		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/dashboard.css",
+		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/bublechart.js",
+		"/C/Users/Etienne/Desktop/Old Stuff/FDA/app/styles/main.css",
+		"/C/Users/Etienne/Desktop/Old Stuff/FDA/app/scripts/directives/chartLines.js",
+		"/C/Users/Etienne/Desktop/Old Stuff/FDA/app/scripts/directives/chartList.js",
+		"/C/Users/Etienne/Desktop/Old Stuff/FDA/app/views/tpllist.html",
+		"/C/Users/Etienne/Desktop/Old Stuff/FDA/app/scripts/directives/chartBarpie.js",
+		"/C/Users/Etienne/Desktop/Old Stuff/FDA/app/views/tplbarpie.html",
+		"/C/Users/Etienne/Desktop/Old Stuff/FDA/app/views/main.html",
+		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/boxplot.js",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/baloons - Copie.js",
+		"/C/Users/Etienne/Desktop/GOC/app/views/charts.html",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/chartCommons.js",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/chartCommonsBubles.js",
-		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/scatterplot.js",
-		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/scatterplot.js",
-		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/dashboard.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/mobs.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/setup.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/main.js",
@@ -242,8 +238,6 @@
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/directives/dimensionsummary.js",
 		"/C/Users/Etienne/Desktop/GOC/app/views/startup.html",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/services/dataload.js",
-		"/C/Users/Etienne/Desktop/Old Stuff/FDA/app/views/tplbarpie.html",
-		"/C/Users/Etienne/Desktop/Old Stuff/FDA/app/scripts/directives/chartBarpie.js",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/directives/filterhandler.js",
 		"/C/Users/Etienne/Desktop/GOC/app/views/templates/filterHandler.html",
 		"/C/Users/Etienne/Desktop/GOC/Gruntfile.js",
@@ -253,7 +247,6 @@
 		"/C/Users/Etienne/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 		"/C/Users/Etienne/Desktop/PythonTuto/python_basics/helloWorld.py",
 		"/C/Users/Etienne/Desktop/PythonTuto/python_basics/foreach.py",
-		"/C/Users/Etienne/Desktop/GOC/app/views/filters.html",
 		"/C/Users/Etienne/Desktop/GOC/app/views/options.html",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/app.js",
 		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/dashboard.html",
@@ -312,30 +305,7 @@
 		"/C/Users/Etienne/Desktop/Pathways/pathways.html",
 		"/C/Users/Etienne/Desktop/Pathways/d3.min.js",
 		"/C/Users/Etienne/Desktop/Pathways/d3.layout.js",
-		"/C/Users/Etienne/Desktop/Pathways/d3.geom.min.js",
-		"/C/Users/Etienne/Desktop/SQ Firebase/app/js/engine/abilityprototype.js",
-		"/C/Users/Etienne/Desktop/FDA/app/scripts/directives/chartBarpie.js",
-		"/C/Users/Etienne/Desktop/FDA/app/scripts/directives/chartLines.js",
-		"/C/Users/Etienne/Desktop/FDA/app/views/tpllist.html",
-		"/C/Users/Etienne/Desktop/FDA/app/views/main.html",
-		"/C/Users/Etienne/Desktop/FDA/app/scripts/controllers/main.js",
-		"/C/Users/Etienne/Desktop/FDA/app/scripts/services/data.js",
-		"/C/Users/Etienne/Desktop/FDA/app/index.html",
-		"/C/Users/Etienne/Desktop/FDA/app/scripts/directives/chartList.js",
-		"/C/Users/Etienne/Desktop/FDA/app/styles/main.css",
-		"/C/Users/Etienne/Desktop/FDA/app/views/tplbarpie.html",
-		"/C/Users/Etienne/Desktop/FDA/app/styles/charts.css",
-		"/C/Users/Etienne/Desktop/FDA/app/bower_components/bootstrap/dist/css/bootstrap.css",
-		"/C/Users/Etienne/Desktop/FDA/app/scripts/app.js",
-		"/C/Users/Etienne/Desktop/OpenFDA/.gitignore",
-		"/C/Users/Etienne/Desktop/Wiki/app/index.html",
-		"/C/Users/Etienne/Desktop/OpenFDA/app/index.html",
-		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/barchart.js",
-		"/C/Users/Etienne/Desktop/FDA/app/scripts/directives/chartBarpieBK.js",
-		"/C/Users/Etienne/Desktop/FDA/.jshintrc",
-		"/C/Users/Etienne/Desktop/FDA/app/bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
-		"/C/Users/Etienne/Desktop/FDA/bower.json",
-		"/C/Users/Etienne/Desktop/Old Stuff/Mongoose/test.html"
+		"/C/Users/Etienne/Desktop/Pathways/d3.geom.min.js"
 	],
 	"find":
 	{
@@ -343,9 +313,12 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 90.0,
 		"where_history":
 		[
+			"C:\\Users\\Etienne\\Desktop\\GOC\\app\\scripts\\",
+			"C:\\Users\\Etienne\\Desktop\\GOC\\app\\scripts\\charts",
+			"C:\\Users\\Etienne\\Desktop\\GOC\\app,C:\\Users\\Etienne\\Desktop\\Old Stuff\\Bubbles",
 			"C:\\Users\\Etienne\\Desktop\\GOC\\app",
 			"C:\\Users\\Etienne\\Desktop\\TheGame\\app",
 			"C:\\Users\\Etienne\\Desktop\\Wiki",
@@ -359,137 +332,137 @@
 		"case_sensitive": true,
 		"find_history":
 		[
-			"changeColorBy",
-			"colorByChanged",
-			"#",
-			"9E0041",
-			"5",
-			"circle",
-			"cx",
-			"cy",
-			"circle buble",
-			".attr('class', 'size-legend-circle buble')",
-			"sizeByChanged",
-			"changeSize",
-			"resizeNodes",
-			"changeSize",
-			" - 1",
-			"dimSize",
-			"CHARTS_UTILS.getStats(_data, dim)",
-			"changeSize",
-			"Infinity",
-			"dim",
-			"group",
-			"dim._cfDim",
-			"data",
-			"baloonCenterLabel",
 			"makeNew",
-			"chartType",
-			"previousChart.chartTypeName",
-			"chartTypeName",
-			".data",
-			"d[key]",
-			"bubles.update",
-			"this.sizeScale",
-			"sizeScale",
-			"svg",
-			"value",
-			"data",
-			"sizeScale",
-			"d.__data__",
-			"data",
-			"clear",
-			"sizeByChanged",
-			"sizeScale",
-			"resizeNodes",
-			"chartType",
-			"forceLayoutLabel",
-			"\"",
-			"uniqueValues",
-			"getUniqueValues",
-			"var ",
-			"yCount",
-			"xCount",
-			"aspectRatio[1]",
-			"aspectRatio[0]",
-			"all",
-			"aspectRatio",
-			"960",
-			"chart",
-			"force",
-			"layoutConfig",
-			"10000",
-			"forceSartedOn",
-			"_this.force",
-			";",
-			"_this",
-			" =",
-			"this.",
-			"layoutGravity",
-			"_this",
-			"\"",
-			"bubble",
-			"_this",
-			"Node",
-			"node",
-			"charge",
-			"startForce",
-			"createForce",
-			"\"",
-			"nodes",
-			"nodes_all",
-			"centers",
-			"force",
-			"dots",
-			"this",
-			"\"",
 			"x",
-			"diameter",
-			"none",
-			"_setGroups",
-			"circles",
-			"75px",
-			"r",
-			"'10'",
-			"[]",
-			"dim",
-			"viewBy",
-			"setChartTypes",
-			"dataType",
-			"uniqueValues",
-			"isLeaf",
-			"posBy",
-			"[secondaryDatatypesProp]",
-			"posBy",
-			"sliceBy",
-			"secondaryDatatypeMatches",
-			"primaryType",
-			"quantitative",
-			"ordinal",
-			"Scale",
-			"primaryScaleTypes",
-			"circles",
-			"color",
-			"false",
-			"true",
+			"_filteredBy",
+			"filterRange",
+			"span",
 			"\"",
-			"make",
-			"true",
-			"const",
-			"constants",
-			"Cons",
-			"UI",
+			"changeFilter",
+			"range",
+			"value",
+			"_groupedBy",
+			"xaTextMinWidth",
+			"classed",
+			"1",
+			"xScale(extent[1])",
+			"1",
+			"36",
+			"this._cfDim",
+			"getQuartiles",
+			"floor",
+			"getQuartiles",
+			"domain",
+			"data",
+			"FILTERS_CHANGED",
+			"\"",
+			"brush",
+			"brushed",
+			"5",
+			"Q1",
+			"Q3",
+			"yScale",
+			"_this.",
+			"yStats",
+			"y",
+			"yStats",
+			"_this.xScale(xVal)",
+			"x",
+			"ya",
+			"on",
+			"x",
+			"delayMs",
+			"makeNew",
+			"getUniqueValues",
+			"v",
+			"uniqueValuesX",
+			"updateChart",
+			"filterData",
+			"filter",
+			"_groupedBy",
+			"FILTERS_CHANGED",
+			"\"",
+			"log",
+			"_groupedBy",
+			"Gare",
+			"filterForValues",
+			"filterCheckboxItem",
+			"text",
+			"CHANGE_FILTERS",
+			"FiltersManager",
+			"CHARTS_UTILS.getStats",
+			"getStats",
 			"0",
-			"sliceBy(dim, 1)",
-			"posBy",
-			"colorBy",
-			"spreadOver",
-			"colorBy",
+			"dim",
+			"autocomplete",
+			"checkboxes",
+			"Filtersmanager",
+			"'stroke-width', 3)",
+			"0.5",
+			"-20",
+			"-15",
+			"-20",
+			")-15",
+			"+3",
 			"0",
-			"userSelection.showMe"
+			"0 - ",
+			"margin",
+			"+3",
+			"6",
+			"margin",
+			"CHARTS_CONFIG.height",
+			"CHARTS_CONFIG.width",
+			"margin",
+			"_margin",
+			"\"",
+			"colorScale",
+			"axisGroup",
+			"var ",
+			"bar",
+			"\"",
+			"svg",
+			"newGroup",
+			" -20",
+			" -15",
+			" _this.xScale(xVal)",
+			"_xDim",
+			"_yDim",
+			"_xDim",
+			"\"",
+			"2",
+			"left",
+			"top",
+			"bottom",
+			"[1]",
+			"margin[0]",
+			"50",
+			"yScale",
+			"x",
+			"label",
+			"dimensions",
+			"transitionTime",
+			"CHART_UTILS",
+			"formatNum",
+			"_this.x(",
+			"_this.y(",
+			"this",
+			"this.y",
+			"quantile(xData, 0.25)",
+			"d3",
+			"_yDim",
+			"xData",
+			"\"",
+			"lastGrayArea",
+			"-10",
+			"-15",
+			"+30",
+			"+40",
+			"- 15",
+			"15",
+			"+10"
 		],
 		"highlight": true,
-		"in_selection": false,
+		"in_selection": true,
 		"preserve_case": true,
 		"regex": false,
 		"replace_history":
@@ -530,55 +503,51 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "scripts/directives/chart.js",
+					"file": "scripts/directives/filterboxplots.js",
 					"settings":
 					{
-						"buffer_size": 7390,
+						"buffer_size": 6596,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4787,
-								4800
-							],
-							[
-								5527,
-								5540
+								3374,
+								3374
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1801.0,
+						"translation.y": 1199.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "scripts/charts/constantsBubles.js",
+					"file": "scripts/charts/scatterplot.js",
 					"settings":
 					{
-						"buffer_size": 5352,
+						"buffer_size": 10402,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3551,
-								3551
+								5032,
+								5032
 							]
 						],
 						"settings":
@@ -588,25 +557,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 681.0,
+						"translation.y": 1624.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "scripts/charts/utils.js",
+					"file": "scripts/services/data.js",
 					"settings":
 					{
-						"buffer_size": 989,
+						"buffer_size": 27501,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								952,
-								952
+								8153,
+								8153
 							]
 						],
 						"settings":
@@ -616,199 +585,119 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 3077.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "views/templates/chart.html",
+					"file": "scripts/charts/constantsBubles.js",
 					"settings":
 					{
-						"buffer_size": 6743,
+						"buffer_size": 8687,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5311,
-								5311
+								7668,
+								7675
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1433.0,
+						"translation.y": 2532.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "styles/main.css",
 					"settings":
 					{
-						"buffer_size": 2184,
+						"buffer_size": 1272,
 						"regions":
 						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										257,
+										264
+									],
+									[
+										570,
+										577
+									],
+									[
+										795,
+										802
+									],
+									[
+										1072,
+										1079
+									]
+								],
+								"scope": ""
+							}
 						},
 						"selection":
 						[
 							[
-								1052,
-								1052
+								1075,
+								1075
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"detect_indentation": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 263.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 5,
-					"file": "scripts/charts/baloons.js",
+					"file": "scripts/directives/chart.js",
 					"settings":
 					{
-						"buffer_size": 7210,
+						"buffer_size": 9893,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6735,
-								6735
+								4732,
+								4732
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "scripts/charts/chartModule.js",
-					"settings":
-					{
-						"buffer_size": 888,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								585,
-								585
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "scripts/charts/config.js",
-					"settings":
-					{
-						"buffer_size": 622,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								301,
-								312
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "styles/charts.css",
-					"settings":
-					{
-						"buffer_size": 214,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								109,
-								109
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "scripts/services/data.js",
-					"settings":
-					{
-						"buffer_size": 25397,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								11359,
-								11538
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 4310.0,
+						"translation.y": 1381.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

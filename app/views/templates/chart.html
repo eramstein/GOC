@@ -23,8 +23,8 @@
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu">
-      <li ng-click="userSelection.showMe.agg='sum'"><a href="#">sum</a></li>
-      <li ng-click="userSelection.showMe.agg='avg'"><a href="#">avg</a></li>
+      <li ng-click="changeShowMeAgg('sum')"><a href="#">sum</a></li>
+      <li ng-click="changeShowMeAgg('avg')"><a href="#">avg</a></li>
   </div>
 </div>
 
@@ -62,8 +62,8 @@
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu">
-      <li ng-click="userSelection.viewBy[0].agg='sum'"><a href="#">sum</a></li>
-      <li ng-click="userSelection.viewBy[0].agg='avg'"><a href="#">avg</a></li>
+      <li ng-click="changeViewByAgg('sum', 0)"><a href="#">sum</a></li>
+      <li ng-click="changeViewByAgg('avg', 0)"><a href="#">avg</a></li>
     </ul>
   </div>
 
@@ -96,8 +96,8 @@
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu">
-      <li ng-click="userSelection.viewBy[1].agg='sum'"><a href="#">sum</a></li>
-      <li ng-click="userSelection.viewBy[1].agg='avg'"><a href="#">avg</a></li>
+      <li ng-click="changeViewByAgg('sum', 1)"><a href="#">sum</a></li>
+      <li ng-click="changeViewByAgg('avg', 1)"><a href="#">avg</a></li>
     </ul>
   </div>
 </div>

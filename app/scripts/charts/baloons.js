@@ -4,12 +4,10 @@ CHARTS_CONSTRUCTORS.Baloons = function(chart){
 
     var _this = this;
     var _data;
-    var _svg = chart.svg;
+    var _svg = d3.select(chart.svg);
 
     var layoutConfig = {
         gravity: 0,
-        //note: a slightly negative gravity (-0.01) would make it look a bit nicer, but aligning labels would harder since the centers would "repel" each other, so you would need something like
-        //.attr('x', x - (Math.ceil(columnCount/2) - currentColumn) * CHARTS_CONFIG.width / (columnCount * 10) )
         damper: 0.1,
         friction: 0.9,  
         charge: function(d) {
@@ -45,11 +43,11 @@ CHARTS_CONSTRUCTORS.Baloons = function(chart){
 
             currentColumn = 0;
             currentRow = 0;
-            uniqueValuesX = CHARTS_UTILS.getUniqueValues(_data, dims[0].dim);
+            uniqueValuesX = CHARTS_UTILS.getDistinctValues(_data, dims[0].dim).sort();
             columnCount = _.keys(uniqueValuesX).length;
-            rowCount = Math.floor(Math.sqrt(columnCount / CHARTS_CONFIG.width * CHARTS_CONFIG.height)); // number of rows
+            rowCount = Math.max(Math.floor(Math.sqrt(columnCount / CHARTS_CONFIG.width * CHARTS_CONFIG.height)),1); // number of rows
 
-            _.each(uniqueValuesX, function (v, k) {
+            _.each(uniqueValuesX, function (v) {                
                 currentColumn++;
                 if(currentColumn > columnCount){
                     currentRow++;
@@ -58,13 +56,13 @@ CHARTS_CONSTRUCTORS.Baloons = function(chart){
                 x = CHARTS_CONFIG.width * (currentColumn - 0.5) / columnCount;
                 y = CHARTS_CONFIG.height * (currentRow + 0.5) / rowCount;
 
-                _this.centers[k] = {'x': x, 'y': y};
+                _this.centers[v] = {'x': x, 'y': y};
 
-                d3.select(_svg).append('text')
+                _svg.append('text')
                   .attr('x', x)
                   .attr('y', y - (CHARTS_CONFIG.height/rowCount)/4)
-                  .attr('class', 'baloon-center-label')
-                  .text(k);
+                  .attr('class', 'text-dim-label baloon-center-label')
+                  .text(v);
             });
         }
         //if 2 viewBy dims, create grid of centers with dims[0] as columns and dims[1] as rows
@@ -72,33 +70,33 @@ CHARTS_CONSTRUCTORS.Baloons = function(chart){
 
             currentColumn = 0;
             currentRow = 0;
-            uniqueValuesX = CHARTS_UTILS.getUniqueValues(_data, dims[0].dim);
-            uniqueValuesY = CHARTS_UTILS.getUniqueValues(_data, dims[1].dim);
+            uniqueValuesX = CHARTS_UTILS.getDistinctValues(_data, dims[0].dim).sort();
+            uniqueValuesY = CHARTS_UTILS.getDistinctValues(_data, dims[1].dim).sort();
             columnCount = _.keys(uniqueValuesX).length;
             rowCount = _.keys(uniqueValuesY).length;
 
-            _.each(uniqueValuesX, function (v, k) {
+            _.each(uniqueValuesX, function (v) {
 
                 currentRow = 0;
                 currentColumn++;
                 x = (CHARTS_CONFIG.width - 100) * (currentColumn - 0.5) / columnCount + 100;
 
-                d3.select(_svg).append('text')
+                _svg.append('text')
                       .attr('x', x) 
                       .attr('y', 30)
-                      .attr('class', 'baloon-center-label')
-                      .text(k);            
+                      .attr('class', 'text-dim-label baloon-center-label')
+                      .text(v);            
 
-                _.each(uniqueValuesY, function (v2, k2) {                   
+                _.each(uniqueValuesY, function (v2) {                   
                     y = CHARTS_CONFIG.height * (currentRow + 0.5) / rowCount;
 
-                    _this.centers[k + '-' + k2] = {'x': x, 'y': y};
+                    _this.centers[v + '-' + v2] = {'x': x, 'y': y};
 
-                    d3.select(_svg).append('text')
+                    _svg.append('text')
                       .attr('x', 60)
                       .attr('y', CHARTS_CONFIG.height / rowCount * (currentRow + 0.5) )
-                      .attr('class', 'baloon-center-label')
-                      .text(k2);
+                      .attr('class', 'text-dim-label baloon-center-label')
+                      .text(v2);
 
                     currentRow++;
                 });                
@@ -108,7 +106,7 @@ CHARTS_CONSTRUCTORS.Baloons = function(chart){
 
     //create one node for each buble - they start at the current position of their corresponding buble
     function createNodes(dims){        
-        var bubles = d3.select(_svg).selectAll('.buble')[0];
+        var bubles = _svg.selectAll('.buble')[0];
         _this.nodes = [];
 
         _.forEach(bubles, function (d) {
@@ -118,8 +116,11 @@ CHARTS_CONSTRUCTORS.Baloons = function(chart){
             if(dims.length===1) { targetCenter = newD[dims[0].dim]; }
             if(dims.length===2) { targetCenter = newD[dims[0].dim] + '-' + newD[dims[1].dim]; }
             newD.radius = 10;
-            newD.x = d.cx.baseVal.value;
-            newD.y = d.cy.baseVal.value;
+            //starting position: current buble if exists; else if new buble (filters), make it near its target center
+            newD.x = d.cx.baseVal.value || _this.centers[targetCenter].x + (Math.random()-0.5) * 10;
+            newD.y = d.cy.baseVal.value || _this.centers[targetCenter].y + (Math.random()-0.5) * 10;
+            newD.px = d.cx.baseVal.value || _this.centers[targetCenter].x + (Math.random()-0.5) * 10; 
+            newD.py = d.cy.baseVal.value || _this.centers[targetCenter].y + (Math.random()-0.5) * 10;
             newD.targetCenter = targetCenter;
             _this.nodes.push(newD);
         });
@@ -138,20 +139,20 @@ CHARTS_CONSTRUCTORS.Baloons = function(chart){
     //make bubles follow their node
     function associateBublesToNodes(){
 
-        var bubles = d3.select(_svg).selectAll('.buble')
-                       .data(_this.nodes, function(d) {return d.key; });               
-       
+        var bubles = _svg.selectAll('.buble')
+                       .data(_this.nodes, function(d) { return d.key; });               
+        
         force.on('tick', function(e) {
             bubles.each(moveTowardsCenters(e.alpha))
               .attr('cx', function(d) { return d.x;})
               .attr('cy', function(d) { return d.y;});
         });
 
-        function moveTowardsCenters(alpha) {
+        function moveTowardsCenters(alpha) {            
             return function(d) {
                 var target = _this.centers[d.targetCenter];
-                d.x = d.x + (target.x - d.x) * layoutConfig.damper * alpha;
-                d.y = d.y + (target.y - d.y) * layoutConfig.damper * alpha;
+                d.x = d.x + (target.x - d.x) * layoutConfig.damper * alpha; 
+                d.y = d.y + (target.y - d.y) * layoutConfig.damper * alpha;                
             };
         }
     }
@@ -176,7 +177,7 @@ CHARTS_CONSTRUCTORS.Baloons = function(chart){
     
     this.update = function(data, dims) {
         _data = data;
-        d3.select(_svg).selectAll('.baloon-center-label').remove();
+        _svg.selectAll('.baloon-center-label').remove();
         createCenters(dims);
         createNodes(dims);
         resizeNodes(); 
@@ -190,9 +191,8 @@ CHARTS_CONSTRUCTORS.Baloons = function(chart){
     };
 
     this.clear = function() {
-        //we need to re-data() the bubles since it gets overwritten when they are linked to nodes
-        d3.select(_svg).selectAll('.buble').data(_data, function(d) {return d.key; });
-        d3.select(_svg).selectAll('.baloon-center-label').remove();
+        _svg.selectAll('.baloon-center-label').remove();
+        forceStartedOn = Date.now - stopAfter - 1;
         force.stop();
     };
 

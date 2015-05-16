@@ -78,7 +78,7 @@ CHARTS_CONSTRUCTORS.ConstantsBubles = function(svg) {
 
     //re-size bubles
     this.changeSize = function (dim) { 
-        this.sizeBy = dim;
+        _this.sizeBy = dim;
         sizeLegend.selectAll('.size-legend-circle').remove();
         sizeLegend.selectAll('.size-legend-text').remove();
 
@@ -123,7 +123,7 @@ CHARTS_CONSTRUCTORS.ConstantsBubles = function(svg) {
     // _this.colorScale = d3.scale.ordinal().range(CHARTS_CONFIG.colorScales.default);
     
     this.changeColor = function(dim, dataType) {
-      this.colorBy = dim;
+      _this.colorBy = dim;
       colorLegend.selectAll('.color-legend-rect').remove();
       colorLegend.selectAll('.color-legend-text').remove();
       colorLegendNumberScale.style('display', 'none');
@@ -131,6 +131,7 @@ CHARTS_CONSTRUCTORS.ConstantsBubles = function(svg) {
       //number dimension: use a gradient
       if(dataType === 'number'){
         var stats = CHARTS_UTILS.getStats(_data, dim);
+        _this.colorScaleType = 'quantitative';
         _this.colorInterpolator = d3.interpolateRgb('#ffffff', '#006600');
         _this.colorScale = d3.scale.linear();        
         _this.colorScale.domain([stats.min, stats.max])
@@ -146,7 +147,8 @@ CHARTS_CONSTRUCTORS.ConstantsBubles = function(svg) {
       }
 
       //text dimension: use different colors for each category
-      if(dataType === 'text'){      
+      if(dataType === 'text'){     
+        _this.colorScaleType = 'nominal'; 
         var uniqueValues = CHARTS_UTILS.getDistinctValues(_data, dim);
         if (uniqueValues.length < 10) {
           _this.colorScale = d3.scale.category10();
@@ -186,9 +188,9 @@ CHARTS_CONSTRUCTORS.ConstantsBubles = function(svg) {
 
         _data = data;
 
-        //add a key to each element
+        //add a key to each element        
         _.forEach(data, function (d, i) {
-          d.key = key + i;
+          d.key = d[key];
         });
 
         //on enter
@@ -200,10 +202,10 @@ CHARTS_CONSTRUCTORS.ConstantsBubles = function(svg) {
               return _this.getSize(_this.sizeBy, d);
           })
           .attr('fill', function (d) {
-              if(this.colorBy){
-
+              if(_this.colorBy){
+                return _this.colorScale(d[_this.colorBy]);
               } else {
-                return 'steelblue';
+                return CHARTS_CONFIG.defaultBubleColor;
               }
           });
         
@@ -212,7 +214,7 @@ CHARTS_CONSTRUCTORS.ConstantsBubles = function(svg) {
           .data(data, function(d) {return d.key; })
         .exit()
         .attr('class', 'buble-being-removed')
-        .transition().duration(CHARTS_CONFIG.transitionTime)
+        //.transition().duration(CHARTS_CONFIG.transitionTime)
               .attr('r', function(d) { return 0; })
         .remove();
 

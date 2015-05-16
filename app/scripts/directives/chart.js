@@ -33,6 +33,7 @@ angular.module('gocApp')
           //if only the aggregation method changed
           if(showMe.dim === previousChart.showMe.dim && showMe.agg !== previousChart.showMe.agg){
             // TODO
+            console.log('new agg');
           }
 
           //if the dimension changed...
@@ -74,22 +75,56 @@ angular.module('gocApp')
         };
 
         chart.viewByChanged = function () {
+          chart[previousChart.chartTypeName].clear();
+          chart[scope.userSelection.chartType.name].build();
+          chart[scope.userSelection.chartType.name].update(data, scope.userSelection.viewBy);
+          previousChart.chartTypeName = scope.userSelection.chartType.name;
+        };
+
+        chart.viewByAggChanged = function () {
           chart[scope.userSelection.chartType.name].update(data, scope.userSelection.viewBy);
         };
 
         chart.chartTypeChanged = function () {
-          var chartType = scope.userSelection.chartType.name;
-
+          chart[previousChart.chartTypeName].clear();
+          chart[scope.userSelection.chartType.name].build();
+          chart[scope.userSelection.chartType.name].update(data, scope.userSelection.viewBy);
+          previousChart.chartTypeName = scope.userSelection.chartType.name;
         };
 
-        chart.colorByChanged = function () {          
-          chart.constants.bubles.changeColor(scope.userSelection.colorBy, dimensions[scope.userSelection.colorBy].dataType);
+        chart.colorByChanged = function () {
+          var dataType = scope.userSelection.colorBy ? dimensions[scope.userSelection.colorBy].dataType : null;
+          chart.constants.bubles.changeColor(scope.userSelection.colorBy, dataType);
+          var reColorMethod = chart[scope.userSelection.chartType.name].onRecolor;
+          if(reColorMethod){ reColorMethod(); }
         };
 
         chart.sizeByChanged = function () {
           chart.constants.bubles.changeSize(scope.userSelection.sizeBy);
           chart[scope.userSelection.chartType.name].onResize();
         };
+
+        // ------------------------------------------------------------------------------------------------
+        // REACT TO DATA CHANGES
+        // ------------------------------------------------------------------------------------------------  
+
+        scope.$on('FILTERS_CHANGED', function(event, args) {
+
+            //for bubles
+            if(scope.userSelection.showMe.type === 'text') {
+              data = dimensions[scope.userSelection.showMe.dim].groupOnAndAggAll();
+                           
+              chart.constants.bubles.makeNew(data, scope.userSelection.showMe.dim);
+              
+              chart[scope.userSelection.chartType.name].update(data, scope.userSelection.viewBy);
+            }
+
+            //for blobs
+            if(scope.userSelection.showMe.type === 'number') {
+              data = dimensions[scope.userSelection.showMe.dim].aggregateOver({'dims':[], 'aggregator':scope.userSelection.showMe.agg});
+              //TODO
+            }   
+        });
 
         // ------------------------------------------------------------------------------------------------
         // CHART CONFIG UI
@@ -128,6 +163,12 @@ angular.module('gocApp')
           chart.showMeChanged();
         };
 
+        scope.changeShowMeAgg = function (agg) {
+          scope.userSelection.showMe.agg = agg;
+          //tell the chart
+          chart.showMeChanged();
+        };
+
         scope.changeViewBy = function (dim, index) {
           //update userSelection.viewBy
           if(dim){
@@ -141,8 +182,16 @@ angular.module('gocApp')
           chart.viewByChanged();
         };
 
+        scope.changeViewByAgg = function (agg, index) {
+          //update userSelection.viewBy
+          scope.userSelection.viewBy[index].agg = agg;
+          //tell the chart
+          chart.viewByAggChanged();
+        };
+
         scope.changeChartType = function (chartType) {
           scope.userSelection.chartType = chartType;
+          chart.chartTypeChanged();
         };
 
         scope.changeColorBy = function (dim) {
@@ -190,7 +239,11 @@ angular.module('gocApp')
         //initial config
         if(scope.initConfig.pivotDim){
           scope.changeShowMe(scope.initConfig.pivotDim);
-        }        
+        }
+
+        // scope.userSelection.chartType.name = 'boxplots';
+        // scope.userSelection.viewBy = [{agg: 'sum', dim: 'District', type: 'text'}, {agg: 'sum', dim: 'Price', type: 'number'}];
+        // chart.viewByChanged();
 
       }
     };

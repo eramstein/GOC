@@ -15,4 +15,6 @@ angular.module('gocApp')
         $rootScope.$broadcast('CHARTS_COLLECTION_CHANGED', this.charts);
     };
 
+
+
   });

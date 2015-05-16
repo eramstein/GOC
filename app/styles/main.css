@@ -21,6 +21,7 @@ body {
     height:100%;
 }
 
+
 /***************************************************
         CHART
 ***************************************************/
@@ -55,6 +56,51 @@ chart .legend-container svg{
     width:100%;
     height:100%;
     padding-top: 30px;
+}
+
+/***************************************************
+        FILTERS
+***************************************************/
+
+.filter-checkbox-item rect{
+    fill: steelblue;
+    fill-opacity: 0.2;
+}
+
+.filter-checkbox-item text{
+    fill: #333;
+    font-size: 12px;
+    /*text-anchor: end;*/
+}
+
+.filter-checkbox-title{
+    font-weight: bold;
+}
+
+.filter-cancel-button{
+    float:right;
+    font-size: 9px;
+    cursor: pointer;
+    color: red;
+}
+
+g.filter-on rect{
+    fill: red;
+}
+
+.brush .extent {
+    fill: red;  
+    fill-opacity: .125;
+    shape-rendering: crispEdges;
+}
+
+.filter-boxplot-value{
+    font-size: 12px;
+    fill: red;  
+}
+
+.hidden {
+    fill-opacity: 0;
 }
 
 /***************************************************

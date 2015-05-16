@@ -34,6 +34,9 @@ var CHARTS = function(svg) {
     };
 
     this.baloons = new CHARTS_CONSTRUCTORS.Baloons(this);
+    this.boxplots = new CHARTS_CONSTRUCTORS.Boxplots(this);
+    this.scatterplot = new CHARTS_CONSTRUCTORS.Scatterplot(this);
+    this.bublebars = new CHARTS_CONSTRUCTORS.Bublebars(this);
 };
 
 //CHARTS_CONSTRUCTORS are functions to draw chart elements

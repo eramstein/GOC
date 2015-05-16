@@ -15,8 +15,11 @@ angular.module('gocApp')
     //  secondaryDatatypes: e.g. [['text', 'number'], ['number']] means this chart type shows up if splitBy/posBy is either an text dim + a quant dim, or just a quant dim
     this.chartTypes = [
         {'name': 'baloons', 'label': 'Baloons', 'primaryDatatypes': ['text'], 'secondaryDatatypes': [[], ['text'], ['text', 'text']]},
+        {'name': 'bublebars', 'label': 'Bars', 'primaryDatatypes': ['text'], 'secondaryDatatypes': [['number']]},
         {'name': 'boxplots', 'label': 'Box Plots', 'primaryDatatypes': ['text'], 'secondaryDatatypes': [['number'], ['number', 'text']]},
         {'name': 'scatterplot', 'label': 'Scatterplot', 'primaryDatatypes': ['text'], 'secondaryDatatypes': [['number', 'number']]}
     ];
+
+    this.filterCheckboxTreshold = 6;
 
   });

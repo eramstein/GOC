@@ -22,6 +22,7 @@
   "globals": {
     "angular": false,
     "d3": false,
+    "$": false,
     "crossfilter": false,
     "CHARTS_CONSTRUCTORS": false,
     "CHARTS_CONFIG": false,
