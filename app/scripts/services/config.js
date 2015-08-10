@@ -17,7 +17,11 @@ angular.module('gocApp')
         {'name': 'baloons', 'label': 'Baloons', 'primaryDatatypes': ['text'], 'secondaryDatatypes': [[], ['text'], ['text', 'text']]},
         {'name': 'bublebars', 'label': 'Bars', 'primaryDatatypes': ['text'], 'secondaryDatatypes': [['number']]},
         {'name': 'boxplots', 'label': 'Box Plots', 'primaryDatatypes': ['text'], 'secondaryDatatypes': [['number'], ['number', 'text']]},
-        {'name': 'scatterplot', 'label': 'Scatterplot', 'primaryDatatypes': ['text'], 'secondaryDatatypes': [['number', 'number']]}
+        {'name': 'scatterplot', 'label': 'Scatterplot', 'primaryDatatypes': ['text'], 'secondaryDatatypes': [['number', 'number']]},
+        {'name': 'oneblob', 'label': 'Blob', 'primaryDatatypes': ['number'], 'secondaryDatatypes': [[]]},
+        {'name': 'barchart', 'label': 'Bars', 'primaryDatatypes': ['number'], 'secondaryDatatypes': [['number'], ['text']]},
+        {'name': 'donut', 'label': 'Donut', 'primaryDatatypes': ['number'], 'secondaryDatatypes': [['number'], ['text']]},
+        {'name': 'multibar', 'label': 'Bars', 'primaryDatatypes': ['number'], 'secondaryDatatypes': [['number', 'number'], ['text', 'number'], ['text', 'text']]}
     ];
 
     this.filterCheckboxTreshold = 6;

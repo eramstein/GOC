@@ -17,7 +17,7 @@ CHARTS_CONSTRUCTORS.ConstantsBubles = function(svg) {
     svg = d3.select(svg);    
     
     //initial creation of a group of circles
-    var bubles = svg.append('svg:g').attr('id', 'bubles');
+    var bubles;
 
     //store current state for size and color
     this.sizeBy = null;
@@ -185,6 +185,16 @@ CHARTS_CONSTRUCTORS.ConstantsBubles = function(svg) {
 
     //sets the enter() and exit() methods, update() will be implemented by each chart type specifically   
     this.makeNew = function (data, key) {
+
+        svg.select('#blobs').remove();
+        svg.select('#bubles').remove();
+        bubles = svg.append('svg:g').attr('id', 'bubles');
+
+        _this.setData(data, key);
+
+    };
+
+    this.setData = function (data, key) {
 
         _data = data;
 

@@ -32,26 +32,16 @@ angular.module('gocApp')
 
           //if only the aggregation method changed
           if(showMe.dim === previousChart.showMe.dim && showMe.agg !== previousChart.showMe.agg){
-            // TODO
-            console.log('new agg');
+            data = dimensions[showMe.dim].aggregateOver({'dims': scope.userSelection.viewBy, 'aggregator':showMe.agg});
+            chart[scope.userSelection.chartType.name].update(data, scope.userSelection.viewBy);
           }
 
           //if the dimension changed...
           if(showMe.dim !== previousChart.showMe.dim) {            
 
             //clear previous chart
-            if(previousChart.chartTypeName) {
-              //if the previous dim was text, clear old bubles
-              if(previousChart.showMe.type === 'text') {
-                chart.constants.bubles.makeNew([], showMe.dim);
-              }
-
-              //if the previous dim was number, clear old paths
-              if(previousChart.showMe.type === 'number') {
-                // TODO
-              }
-              
-              chart[previousChart.chartTypeName].clear();
+            if(previousChart.chartTypeName) {              
+              chart[previousChart.chartTypeName].clear(scope.userSelection.chartType.name);
             }            
 
             //if the new dim is text, create new bubles
@@ -65,7 +55,9 @@ angular.module('gocApp')
             //if the new dim is number, create new paths
             if(showMe.type === 'number') {
               data = dimensions[showMe.dim].aggregateOver({'dims':[], 'aggregator':showMe.agg});
-              //TODO
+              chart.constants.blobs.makeNew();
+              chart[scope.userSelection.chartType.name].build();
+              chart[scope.userSelection.chartType.name].update(data, []);
             }
           }          
 
@@ -75,8 +67,11 @@ angular.module('gocApp')
         };
 
         chart.viewByChanged = function () {
-          chart[previousChart.chartTypeName].clear();
+          chart[previousChart.chartTypeName].clear(scope.userSelection.chartType.name);
           chart[scope.userSelection.chartType.name].build();
+          if(scope.userSelection.showMe.type === 'number') {
+            setDataForNumericDim();
+          }          
           chart[scope.userSelection.chartType.name].update(data, scope.userSelection.viewBy);
           previousChart.chartTypeName = scope.userSelection.chartType.name;
         };
@@ -86,7 +81,7 @@ angular.module('gocApp')
         };
 
         chart.chartTypeChanged = function () {
-          chart[previousChart.chartTypeName].clear();
+          chart[previousChart.chartTypeName].clear(scope.userSelection.chartType.name);
           chart[scope.userSelection.chartType.name].build();
           chart[scope.userSelection.chartType.name].update(data, scope.userSelection.viewBy);
           previousChart.chartTypeName = scope.userSelection.chartType.name;
@@ -114,17 +109,21 @@ angular.module('gocApp')
             if(scope.userSelection.showMe.type === 'text') {
               data = dimensions[scope.userSelection.showMe.dim].groupOnAndAggAll();
                            
-              chart.constants.bubles.makeNew(data, scope.userSelection.showMe.dim);
+              chart.constants.bubles.setData(data, scope.userSelection.showMe.dim);
               
               chart[scope.userSelection.chartType.name].update(data, scope.userSelection.viewBy);
             }
 
             //for blobs
             if(scope.userSelection.showMe.type === 'number') {
-              data = dimensions[scope.userSelection.showMe.dim].aggregateOver({'dims':[], 'aggregator':scope.userSelection.showMe.agg});
-              //TODO
+              setDataForNumericDim();
+              chart[scope.userSelection.chartType.name].update(data, scope.userSelection.viewBy);
             }   
         });
+
+        function setDataForNumericDim() {
+          data = dimensions[scope.userSelection.showMe.dim].aggregateOver({'dims': _.pluck(scope.userSelection.viewBy, 'dim'), 'aggregator':scope.userSelection.showMe.agg});          
+        }
 
         // ------------------------------------------------------------------------------------------------
         // CHART CONFIG UI
@@ -153,12 +152,13 @@ angular.module('gocApp')
           if(dimensions[dim].dataType === 'number' && !scope.userSelection.showMe.agg){
             scope.userSelection.showMe.agg = 'sum';
           }
-          //reset chart types dropdown
-          scope.refreshAvailableChartTypes();
+          
           //clear all other userSelection
           scope.userSelection.viewBy = [];
           scope.changeColorBy(null);
-          scope.changeSizeBy(null);          
+          scope.changeSizeBy(null); 
+          //reset chart types dropdown
+          scope.refreshAvailableChartTypes();          
           //tell the chart
           chart.showMeChanged();
         };

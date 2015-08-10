@@ -44,7 +44,6 @@ angular.module('gocApp')
             .attr('transform', 'translate(0,0.5)');
 
         var xaLineMin = newGroup.append('line')
-            .style('stroke', '#000')
             .attr('y1', 15)
             .attr('y2', 15);
         var xaTextMin = newGroup.append('text')
@@ -56,12 +55,11 @@ angular.module('gocApp')
         var xaLineQ = newGroup.append('line')
             .attr('y1', 15)
             .attr('y2', 15)
-            .style('stroke', '#000')
             .style('stroke-width', 3);
         var xaLineMed = newGroup.append('line')
+            .attr('class', 'med-line')
             .attr('y1', 15)
             .attr('y2', 15)
-            .style('stroke', '#fff')
             .style('stroke-width', 4);
         var xaTextMed = newGroup.append('text')
             .attr('y', 26);

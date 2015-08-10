@@ -7,11 +7,18 @@ CHARTS_CONSTRUCTORS.Scatterplot = function(chart){
     var _svg = d3.select(chart.svg);
     var _margin = CHARTS_CONFIG.margins;
     var _previousScaleSize;
+    var _xMinOld, _yMinOld, _xMaxOld, _yMaxOld;
 
     this.xScale = d3.scale.linear()
         .range([_margin.left, (CHARTS_CONFIG.width - _margin.right )]);
 
     this.yScale = d3.scale.linear()
+        .range([(CHARTS_CONFIG.height - _margin.bottom), _margin.top]);
+
+    this.xScaleOld = d3.scale.linear()
+        .range([_margin.left, (CHARTS_CONFIG.width - _margin.right )]);
+
+    this.yScaleOld = d3.scale.linear()
         .range([(CHARTS_CONFIG.height - _margin.bottom), _margin.top]);
     
 
@@ -112,7 +119,7 @@ CHARTS_CONSTRUCTORS.Scatterplot = function(chart){
     this.update = function(data, dims) { 
         _data = data;
 
-        var xMed, yMed, xMin, yMin, xMax, yMax, xQ1, yQ1, xQ3, yQ3;
+        var xMed, yMed, xMin, yMin, xMax, yMax, xQ1, yQ1, xQ3, yQ3;        
 
         var xStats =  CHARTS_UTILS.getStats(_data, dims[1].dim, dims[1].agg);
         var yStats =  CHARTS_UTILS.getStats(_data, dims[0].dim, dims[0].agg);
@@ -128,18 +135,6 @@ CHARTS_CONSTRUCTORS.Scatterplot = function(chart){
         xQ3 = xStats.Q3;
         yQ3 = yStats.Q3;
         
-        // change scale unless the new one is within the old one and not 5 times smaller
-          // if( (!
-          //       (( xMax < _previousScaleSize[0][1] && xMin > _previousScaleSize[0][0] && yMax < _previousScaleSize[1][1] && yMin > _previousScaleSize[1][0]) &&
-          //       ( (xMax - xMin) > (_previousScaleSize[0][1]-_previousScaleSize[0][0]) / 5 && (yMax - yMin) > (_previousScaleSize[1][1]-_previousScaleSize[1][0]) / 5 ))
-          //     ) || 
-          //     (_previousScaleSize[0] === 0 && _previousScaleSize[1] === 0)
-          //   ){
-          //   this.xScale.domain([xMin, xMax]);
-          //   this.yScale.domain([yMin, yMax]);
-          //   _previousScaleSize = [[xMin, xMax], [yMin, yMax]];
-          // } 
-
         this.xScale.domain([xMin, xMax]);
         this.yScale.domain([yMin, yMax]);
 
@@ -149,105 +144,126 @@ CHARTS_CONSTRUCTORS.Scatterplot = function(chart){
         var yMedText = CHARTS_UTILS.shiftText(_this.yScale(yMed), yQ3Text);
         var yQ1Text = CHARTS_UTILS.shiftText(_this.yScale(yQ1), yMedText);
         var yMinText = CHARTS_UTILS.shiftText(_this.yScale(yMin), yQ1Text);
+  
 
-        //update axis
-        _this.xAxisLabel
-            .text(dims[1].dim);
-        _this.xaLineMin
-          .transition().duration(CHARTS_CONFIG.transitionTime)
-          .attr('x1', _this.xScale(xMin))
-          .attr('x2', _this.xScale(xMax));
-        _this.xaTextMin
-          .transition().duration(CHARTS_CONFIG.transitionTime)
-          .attr('x', _this.xScale(xMin))
-          .text(CHARTS_UTILS.formatNum(xMin));
-        _this.xaTextMax
-          .transition().duration(CHARTS_CONFIG.transitionTime)
-          .attr('x', _this.xScale(xMax))
-          .text(CHARTS_UTILS.formatNum(xMax));
-        _this.xaLineQ
-          .transition().duration(CHARTS_CONFIG.transitionTime)
-          .attr('x1', _this.xScale(xQ1))
-          .attr('x2', _this.xScale(xQ3));
-        _this.xaTextQ1
-          .transition().duration(CHARTS_CONFIG.transitionTime)
-          .attr('x', _this.xScale(xQ1))
-          .text(CHARTS_UTILS.formatNum(xQ1));
-        _this.xaTextQ3
-          .transition().duration(CHARTS_CONFIG.transitionTime)
-          .attr('x', _this.xScale(xQ3))
-          .text(CHARTS_UTILS.formatNum(xQ3));
-        _this.xaLineMed
-          .transition().duration(CHARTS_CONFIG.transitionTime)
-          .attr('x1', _this.xScale(xMed)-1.5)
-          .attr('x2', _this.xScale(xMed)+1.5);
-        _this.xaTextMed
-          .transition().duration(CHARTS_CONFIG.transitionTime)
-          .attr('x', _this.xScale(xMed))
-          .text(CHARTS_UTILS.formatNum(xMed));
+        function runTransition (xScale, yScale) {
+           console.log(yScale.domain());
+          //update axis
+          _this.xAxisLabel
+              .text(dims[1].dim);
+          _this.xaLineMin
+            .transition().duration(CHARTS_CONFIG.transitionTime)
+            .attr('x1', xScale(xMin))
+            .attr('x2', xScale(xMax));
+          _this.xaTextMin
+            .transition().duration(CHARTS_CONFIG.transitionTime)
+            .attr('x', xScale(xMin))
+            .text(CHARTS_UTILS.formatNum(xMin));
+          _this.xaTextMax
+            .transition().duration(CHARTS_CONFIG.transitionTime)
+            .attr('x', xScale(xMax))
+            .text(CHARTS_UTILS.formatNum(xMax));
+          _this.xaLineQ
+            .transition().duration(CHARTS_CONFIG.transitionTime)
+            .attr('x1', xScale(xQ1))
+            .attr('x2', xScale(xQ3));
+          _this.xaTextQ1
+            .transition().duration(CHARTS_CONFIG.transitionTime)
+            .attr('x', xScale(xQ1))
+            .text(CHARTS_UTILS.formatNum(xQ1));
+          _this.xaTextQ3
+            .transition().duration(CHARTS_CONFIG.transitionTime)
+            .attr('x', xScale(xQ3))
+            .text(CHARTS_UTILS.formatNum(xQ3));
+          _this.xaLineMed
+            .transition().duration(CHARTS_CONFIG.transitionTime)
+            .attr('x1', xScale(xMed)-1.5)
+            .attr('x2', xScale(xMed)+1.5);
+          _this.xaTextMed
+            .transition().duration(CHARTS_CONFIG.transitionTime)
+            .attr('x', xScale(xMed))
+            .text(CHARTS_UTILS.formatNum(xMed));
 
-        _this.yAxisLabel
-          .text(dims[0].dim);
-        _this.yaLineMin
-          .transition().duration(CHARTS_CONFIG.transitionTime)
-          .attr('y1', _this.yScale(yMin))
-          .attr('y2', _this.yScale(yMax));
-        _this.yaTextMin
-          .transition().duration(CHARTS_CONFIG.transitionTime)
-          .attr('y', yMinText)
-          .text(CHARTS_UTILS.formatNum(yMin));
-        _this.yaTextMax
-          .transition().duration(CHARTS_CONFIG.transitionTime)
-          .attr('y', yMaxText)
-          .text(CHARTS_UTILS.formatNum(yMax));
-        _this.yaLineQ
-          .transition().duration(CHARTS_CONFIG.transitionTime)
-          .attr('y1', _this.yScale(yQ1))
-          .attr('y2', _this.yScale(yQ3));
-        _this.yaTextQ1
-          .transition().duration(CHARTS_CONFIG.transitionTime)
-          .attr('y', yQ1Text)
-          .text(CHARTS_UTILS.formatNum(yQ1));
-        _this.yaTextQ3
-          .transition().duration(CHARTS_CONFIG.transitionTime)
-          .attr('y', yQ3Text)
-          .text(CHARTS_UTILS.formatNum(yQ3));
-        _this.yaLineMed
-          .transition().duration(CHARTS_CONFIG.transitionTime)
-          .attr('y1', _this.yScale(yMed)-1.5)
-          .attr('y2', _this.yScale(yMed)+1.5);
-        _this.yaTextMed
-          .transition().duration(CHARTS_CONFIG.transitionTime)
-          .attr('y',yMedText)
-          .text(CHARTS_UTILS.formatNum(yMed));
+          _this.yAxisLabel
+            .text(dims[0].dim);
+          _this.yaLineMin
+            .transition().duration(CHARTS_CONFIG.transitionTime)
+            .attr('y1', yScale(yMin))
+            .attr('y2', yScale(yMax));
+          _this.yaTextMin
+            .transition().duration(CHARTS_CONFIG.transitionTime)
+            .attr('y', yMinText)
+            .text(CHARTS_UTILS.formatNum(yMin));
+          _this.yaTextMax
+            .transition().duration(CHARTS_CONFIG.transitionTime)
+            .attr('y', yMaxText)
+            .text(CHARTS_UTILS.formatNum(yMax));
+          _this.yaLineQ
+            .transition().duration(CHARTS_CONFIG.transitionTime)
+            .attr('y1', yScale(yQ1))
+            .attr('y2', yScale(yQ3));
+          _this.yaTextQ1
+            .transition().duration(CHARTS_CONFIG.transitionTime)
+            .attr('y', yQ1Text)
+            .text(CHARTS_UTILS.formatNum(yQ1));
+          _this.yaTextQ3
+            .transition().duration(CHARTS_CONFIG.transitionTime)
+            .attr('y', yQ3Text)
+            .text(CHARTS_UTILS.formatNum(yQ3));
+          _this.yaLineMed
+            .transition().duration(CHARTS_CONFIG.transitionTime)
+            .attr('y1', yScale(yMed)-1.5)
+            .attr('y2', yScale(yMed)+1.5);
+          _this.yaTextMed
+            .transition().duration(CHARTS_CONFIG.transitionTime)
+            .attr('y',yMedText)
+            .text(CHARTS_UTILS.formatNum(yMed));
 
-        //update gray rectangles
-        _this.grayRectXQ
-          .transition().duration(CHARTS_CONFIG.transitionTime)
-          .attr('x', _this.xScale(xQ1)+0.5)          
-          .attr('width', _this.xScale(xMed) - _this.xScale(xQ1)-1);
-        _this.grayRectXM
-          .transition().duration(CHARTS_CONFIG.transitionTime)
-          .attr('x', _this.xScale(xMed)+1.5)
-          .attr('width', _this.xScale(xQ3) - _this.xScale(xMed)-1.5);
-        _this.grayRectYQ
-          .transition().duration(CHARTS_CONFIG.transitionTime)
-          .attr('y',  _this.yScale(yQ3))
-          .attr('height', _this.yScale(yMed) - _this.yScale(yQ3) -1.5);
-        _this.grayRectYM
-          .transition().duration(CHARTS_CONFIG.transitionTime)
-          .attr('y',  _this.yScale(yMed) + 1)
-          .attr('height', _this.yScale(yQ1) - _this.yScale(yMed) - 1.5);
+          //update gray rectangles
+          _this.grayRectXQ
+            .transition().duration(CHARTS_CONFIG.transitionTime)
+            .attr('x', xScale(xQ1)+0.5)          
+            .attr('width', xScale(xMed) - xScale(xQ1)-1);
+          _this.grayRectXM
+            .transition().duration(CHARTS_CONFIG.transitionTime)
+            .attr('x', xScale(xMed)+1.5)
+            .attr('width', xScale(xQ3) - xScale(xMed)-1.5);
+          _this.grayRectYQ
+            .transition().duration(CHARTS_CONFIG.transitionTime)
+            .attr('y',  yScale(yQ3))
+            .attr('height', yScale(yMed) - yScale(yQ3) -1.5);
+          _this.grayRectYM
+            .transition().duration(CHARTS_CONFIG.transitionTime)
+            .attr('y',  yScale(yMed) + 1)
+            .attr('height', yScale(yQ1) - yScale(yMed) - 1.5);
 
-        // redraw bubles to put them on top
-       $('#bubles').insertAfter('#lastGrayArea');
-        // position, size and color bubles       
-        _svg.selectAll('.buble')
-          .data(_data, function(d) {return d.key; })
-          .transition().duration(CHARTS_CONFIG.transitionTime)
-              .attr('cx', function(d) {return _this.xScale(d[dims[1].dim + '_' + dims[1].agg]); })
-              .attr('cy', function(d) {return _this.yScale(d[dims[0].dim + '_' + dims[0].agg]); });
-        
+          // redraw bubles to put them on top
+          $('#bubles').insertAfter('#lastGrayArea');
+          // position, size and color bubles       
+          _svg.selectAll('.buble')
+            .data(_data, function(d) {return d.key; })
+            .transition().duration(CHARTS_CONFIG.transitionTime)
+                .attr('cx', function(d) {return xScale(d[dims[1].dim + '_' + dims[1].agg]); })
+                .attr('cy', function(d) {return yScale(d[dims[0].dim + '_' + dims[0].agg]); });
+        }
+
+        // first zoom out to an area that comprises both the old and new areas
+        this.xScaleOld.domain([Math.min(xMin, _xMinOld || xMin), Math.max(xMax, _xMaxOld || xMax)]);
+        this.yScaleOld.domain([Math.min(yMin, _yMinOld || yMin), Math.max(yMax, _yMaxOld || yMax)]);
+       
+        runTransition(this.xScaleOld, this.yScaleOld);
+
+        //then zoom in the new area
+        setTimeout(function() {
+            runTransition(_this.xScale, _this.yScale);
+        }, CHARTS_CONFIG.transitionTime + 20);        
+
+        //store the scale for next transition
+        _xMinOld = xMin;
+        _yMinOld = yMin;
+        _xMaxOld = xMax;
+        _yMaxOld = yMax;
+         
     };
 
     this.onResize = function() {

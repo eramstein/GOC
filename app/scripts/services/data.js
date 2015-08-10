@@ -127,22 +127,12 @@ angular.module('gocApp')
         // TODO: this looks only at the first record !
         var sample = _sourceData[0][key];
         
-        if (isDate(sample)) {
-            if (isNaN(sample)) {
-                output.scaleType = 'ordinal';
-                output.dataType = 'date';
-            } else {
-                output.scaleType = 'quantitative';
-                output.dataType = 'number';
-            }
+        if (isNaN(sample)) {
+            output.scaleType = 'ordinal';
+            output.dataType = 'text';
         } else {
-            if (isNaN(sample)) {
-                output.scaleType = 'ordinal';
-                output.dataType = 'text';
-            } else {
-                output.scaleType = 'quantitative';
-                output.dataType = 'number';
-            }
+            output.scaleType = 'quantitative';
+            output.dataType = 'number';
         }
 
         return output;
@@ -272,12 +262,9 @@ angular.module('gocApp')
 
         //case no dim to group on, we aggregate on _dim itself and return the value
         if(groupBy.dims.length === 0){
-            if(!_.isEqual('groupAll', _dim._groupedBy)){
-                _dim._groupAll(groupBy.aggregator);
-                _dim._groupedBy = 'groupAll';
-            }
-            values = _dim._cfGroup.value();
-            if(groupBy.aggregator === 'avg'){
+            _dim._groupAll(groupBy.aggregator);
+            values = _dim._cfGroup.value();          
+            if(groupBy.aggregator === 'avg'){               
                 valuesForChart = values._avg;
             } else {
                 valuesForChart = values;
@@ -291,10 +278,8 @@ angular.module('gocApp')
 
         //case 1 dim to group on, we group it, aggregate on it and return the value        
         if(groupBy.dims.length === 1){            
-            if(!_.isEqual('group' + groupBy.aggregator, dimToGroupOn._groupedBy)){
-                dimToGroupOn._setGroups([{'name': _dim.name, 'aggregator': groupBy.aggregator}]);
-                dimToGroupOn._groupedBy = 'group' + groupBy.aggregator;
-            }
+            dimToGroupOn._setGroups([{'name': _dim.name, 'aggregator': groupBy.aggregator}]);
+            dimToGroupOn._groupedBy = 'group' + groupBy.aggregator;
             values = dimToGroupOn._cfGroup.all();            
             //transform the value hashes into primitives (we only have 1 dim anyways)
             _.forEach(values, function(d) {
@@ -307,10 +292,8 @@ angular.module('gocApp')
 
         //case 2 dims to group on, we group on the first, aggregate on unique values of the second and return the value
         if(groupBy.dims.length === 2){
-            if(!_.isEqual(groupBy, dimToGroupOn._groupedBy)){
-                _dim._aggregateOverTwoDims(groupBy);
-                dimToGroupOn._groupedBy = groupBy;
-            }
+            _dim._aggregateOverTwoDims(groupBy);
+            dimToGroupOn._groupedBy = groupBy;
             values = dimToGroupOn._cfGroup.all();
             //transform the value hashes into arrays usable by d3
             _.forEach(values, function(d) {
@@ -391,7 +374,7 @@ angular.module('gocApp')
             tempString += 'p._sum -= v.' + this.name + ';';
             tempString += 'p._avg = p._sum/p._count;';
             tempString += 'return p;';
-            var reduceRemove = new Function('d', 'return d.' + this.name);
+            var reduceRemove = new Function('p', 'v', tempString);
 
             var reduceInit = function() {
                 return {'_count': 0, '_sum': 0, '_avg': 0};

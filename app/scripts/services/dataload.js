@@ -16,9 +16,15 @@ angular.module('gocApp')
                 reader.onload = function(e) {
                     var data = e.target.result;
                     data = d3[extension].parse(data);
+                    //add a record number to have at least one dim that represents individual records
+                    if(data.length < 1000){
+                        _.each(data, function(value, key){
+                           value.record = 'Record ' + key;
+                        });
+                    }
+                    console.table(data);
                     Data.prepareData(data);
                     if(callback){
-                        console.log('call back');
                         callback();
                     }
                 };

@@ -1,164 +1,169 @@
 
 <!-- SHOW ME -->
 
-<div class="chart-config-block">
-  <div class="help-text btn-sm">
-    Show Me
-  </div>
-  <div class="dropdown">
-    <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown">
-      {{userSelection.showMe.dim}}
-      <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu">
-      <li ng-repeat="dim in showMeDims.text" ng-click="changeShowMe(dim)"><a href="#">{{dim}}</a></li>
-      <li class="divider"></li>
-      <li ng-repeat="dim in showMeDims.number" ng-click="changeShowMe(dim)"><a href="#">{{dim}}</a></li>
-    </ul>
+<div class=chart-config>
+  <div class="chart-config-block">
+    <div class="help-text btn-sm">
+      Show Me
+    </div>
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown">
+        {{userSelection.showMe.dim}}
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li ng-repeat="dim in showMeDims.text" ng-click="changeShowMe(dim)"><a href="#">{{dim}}</a></li>
+        <li class="divider"></li>
+        <li ng-repeat="dim in showMeDims.number" ng-click="changeShowMe(dim)"><a href="#">{{dim}}</a></li>
+      </ul>
+    </div>
+
+    <!-- <div class="dropdown" ng-show="userSelection.showMe.type==='number' && userSelection.showMe.dim">
+      <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown">
+        ({{userSelection.showMe.agg}})
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li ng-click="changeShowMeAgg('sum')"><a href="#">sum</a></li>
+        <li ng-click="changeShowMeAgg('avg')"><a href="#">avg</a></li>
+    </div> -->
+
   </div>
 
-  <div class="dropdown" ng-show="userSelection.showMe.type==='number' && userSelection.showMe.dim">
-    <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown">
-      ({{userSelection.showMe.agg}})
-      <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu">
-      <li ng-click="changeShowMeAgg('sum')"><a href="#">sum</a></li>
-      <li ng-click="changeShowMeAgg('avg')"><a href="#">avg</a></li>
+
+  <!-- VIEW BY (POS BY & SLICE BY)-->
+
+  <div class="chart-config-block" ng-show="userSelection.showMe.type==='text' || userSelection.showMe.type==='number'">
+    <div class="help-text btn-sm" ng-show="userSelection.showMe.type==='text'">
+      Position by
+    </div>
+    <div class="help-text btn-sm" ng-show="userSelection.showMe.type==='number'">
+      Slice by
+    </div>
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown">
+        {{userSelection.viewBy[0].dim}}
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li ng-click="changeViewBy(null, 0)"><a href="#">---</a></li>
+        <li ng-repeat="dim in showMeDims.text" ng-click="changeViewBy(dim, 0)" 
+            ng-show="(userSelection.showMe.type==='number' || userSelection.showMe.hasUniqueValues) && userSelection.showMe.dim !== dim">
+            <a href="#">{{dim}}</a>
+        </li>
+        <li class="divider" ng-show="userSelection.showMe.type==='number' || userSelection.showMe.hasUniqueValues"></li>
+        <li ng-repeat="dim in showMeDims.number" ng-click="changeViewBy(dim, 0)"><a href="#">{{dim}}</a></li>
+      </ul>
+    </div>
+
+    <!-- <div class="dropdown" ng-show="userSelection.showMe.type==='text' 
+                                  && userSelection.viewBy[0] 
+                                  && userSelection.viewBy[0].type==='number' 
+                                  && !userSelection.showMe.hasUniqueValues">
+      <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown">
+        ({{userSelection.viewBy[0].agg}})
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li ng-click="changeViewByAgg('sum', 0)"><a href="#">sum</a></li>
+        <li ng-click="changeViewByAgg('avg', 0)"><a href="#">avg</a></li>
+      </ul>
+    </div> -->
+
+    <div class="help-text btn-sm" ng-show="userSelection.viewBy[0] && userSelection.showMe.type!=='number'">
+      and
+    </div>
+
+    <div class="dropdown" ng-show="userSelection.viewBy[0] && userSelection.showMe.type!=='number'">
+      <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown">
+        {{userSelection.viewBy[1].dim}}
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li ng-click="changeViewBy(null, 1)"><a href="#">---</a></li>
+        <li ng-repeat="dim in showMeDims.text" ng-click="changeViewBy(dim, 1)"
+            ng-show="(userSelection.showMe.type==='number' || userSelection.showMe.hasUniqueValues) && userSelection.showMe.dim !== dim">
+            <a href="#">{{dim}}</a>
+        </li>
+        <li class="divider" ng-show="userSelection.showMe.type==='number' || userSelection.showMe.hasUniqueValues"></li>
+        <li ng-repeat="dim in showMeDims.number" ng-click="changeViewBy(dim, 1)"><a href="#">{{dim}}</a></li>
+      </ul>
+    </div>
+
+    <!-- <div class="dropdown" ng-show="userSelection.showMe.type==='text' 
+                                  && userSelection.viewBy[0]
+                                  && userSelection.viewBy[1] 
+                                  && userSelection.viewBy[1].type==='number' 
+                                  && !userSelection.showMe.hasUniqueValues">
+      <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown">
+        ({{userSelection.viewBy[1].agg}})
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li ng-click="changeViewByAgg('sum', 1)"><a href="#">sum</a></li>
+        <li ng-click="changeViewByAgg('avg', 1)"><a href="#">avg</a></li>
+      </ul>
+    </div> -->
+    
+  </div>
+
+
+  <!-- COLOR BY -->
+
+  <div class="chart-config-block" ng-show="userSelection.showMe.type==='text'">
+    <div class="help-text btn-sm">
+      Color by
+    </div>
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown">
+        {{userSelection.colorBy}}
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li ng-click="userSelection.colorBy=null"><a href="#">---</a></li>
+        <li class="divider"></li>
+        <li ng-repeat="dim in showMeDims.text" ng-click="changeColorBy(dim)"><a href="#">{{dim}}</a></li>
+        <li class="divider"></li>
+        <li ng-repeat="dim in showMeDims.number" ng-click="changeColorBy(dim)"><a href="#">{{dim}}</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SIZE BY -->
+
+  <div class="chart-config-block" ng-show="userSelection.showMe.type==='text'">
+    <div class="help-text btn-sm">
+      Size by
+    </div>
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown">
+        {{userSelection.sizeBy}}
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li ng-click="changeSizeBy(null)"><a href="#">---</a></li>
+        <li ng-repeat="dim in showMeDims.number" ng-click="changeSizeBy(dim)"><a href="#">{{dim}}</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CHART TYPE -->
+
+  <div class="chart-config-block">
+    <div class="help-text btn-sm">
+      As a
+    </div>
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown">
+        {{userSelection.chartType.label}}
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li ng-repeat="chartType in chartTypes" ng-click="changeChartType(chartType)"><a href="#">{{chartType.label}}</a></li>
+      </ul>
+    </div>
   </div>
 </div>
-
-
-<!-- VIEW BY (POS BY & SLICE BY)-->
-
-<div class="chart-config-block" ng-show="userSelection.showMe.type==='text' || userSelection.showMe.type==='number'">
-  <div class="help-text btn-sm" ng-show="userSelection.showMe.type==='text'">
-    Position by
-  </div>
-  <div class="help-text btn-sm" ng-show="userSelection.showMe.type==='number'">
-    Slice by
-  </div>
-  <div class="dropdown">
-    <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown">
-      {{userSelection.viewBy[0].dim}}
-      <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu">
-      <li ng-click="changeViewBy(null, 0)"><a href="#">---</a></li>
-      <li ng-repeat="dim in showMeDims.text" ng-click="changeViewBy(dim, 0)" 
-          ng-show="(userSelection.showMe.type==='number' || userSelection.showMe.hasUniqueValues) && userSelection.showMe.dim !== dim">
-          <a href="#">{{dim}}</a>
-      </li>
-      <li class="divider" ng-show="userSelection.showMe.type==='number' || userSelection.showMe.hasUniqueValues"></li>
-      <li ng-repeat="dim in showMeDims.number" ng-click="changeViewBy(dim, 0)"><a href="#">{{dim}}</a></li>
-    </ul>
-  </div>
-  <div class="dropdown" ng-show="userSelection.showMe.type==='text' 
-                                && userSelection.viewBy[0] 
-                                && userSelection.viewBy[0].type==='number' 
-                                && !userSelection.showMe.hasUniqueValues">
-    <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown">
-      ({{userSelection.viewBy[0].agg}})
-      <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu">
-      <li ng-click="changeViewByAgg('sum', 0)"><a href="#">sum</a></li>
-      <li ng-click="changeViewByAgg('avg', 0)"><a href="#">avg</a></li>
-    </ul>
-  </div>
-
-  <div class="help-text btn-sm" ng-show="userSelection.viewBy[0]">
-    and
-  </div>
-
-  <div class="dropdown" ng-show="userSelection.viewBy[0]">
-    <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown">
-      {{userSelection.viewBy[1].dim}}
-      <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu">
-      <li ng-click="changeViewBy(null, 1)"><a href="#">---</a></li>
-      <li ng-repeat="dim in showMeDims.text" ng-click="changeViewBy(dim, 1)"
-          ng-show="(userSelection.showMe.type==='number' || userSelection.showMe.hasUniqueValues) && userSelection.showMe.dim !== dim">
-          <a href="#">{{dim}}</a>
-      </li>
-      <li class="divider" ng-show="userSelection.showMe.type==='number' || userSelection.showMe.hasUniqueValues"></li>
-      <li ng-repeat="dim in showMeDims.number" ng-click="changeViewBy(dim, 1)"><a href="#">{{dim}}</a></li>
-    </ul>
-  </div>
-  <div class="dropdown" ng-show="userSelection.showMe.type==='text' 
-                                && userSelection.viewBy[0]
-                                && userSelection.viewBy[1] 
-                                && userSelection.viewBy[1].type==='number' 
-                                && !userSelection.showMe.hasUniqueValues">
-    <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown">
-      ({{userSelection.viewBy[1].agg}})
-      <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu">
-      <li ng-click="changeViewByAgg('sum', 1)"><a href="#">sum</a></li>
-      <li ng-click="changeViewByAgg('avg', 1)"><a href="#">avg</a></li>
-    </ul>
-  </div>
-</div>
-
-
-<!-- COLOR BY -->
-
-<div class="chart-config-block" ng-show="userSelection.showMe.type==='text'">
-  <div class="help-text btn-sm">
-    Color by
-  </div>
-  <div class="dropdown">
-    <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown">
-      {{userSelection.colorBy}}
-      <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu">
-      <li ng-click="userSelection.colorBy=null"><a href="#">---</a></li>
-      <li class="divider"></li>
-      <li ng-repeat="dim in showMeDims.text" ng-click="changeColorBy(dim)"><a href="#">{{dim}}</a></li>
-      <li class="divider"></li>
-      <li ng-repeat="dim in showMeDims.number" ng-click="changeColorBy(dim)"><a href="#">{{dim}}</a></li>
-    </ul>
-  </div>
-</div>
-
-<!-- SIZE BY -->
-
-<div class="chart-config-block" ng-show="userSelection.showMe.type==='text'">
-  <div class="help-text btn-sm">
-    Size by
-  </div>
-  <div class="dropdown">
-    <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown">
-      {{userSelection.sizeBy}}
-      <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu">
-      <li ng-click="changeSizeBy(null)"><a href="#">---</a></li>
-      <li ng-repeat="dim in showMeDims.number" ng-click="changeSizeBy(dim)"><a href="#">{{dim}}</a></li>
-    </ul>
-  </div>
-</div>
-
-<!-- CHART TYPE -->
-
-<div class="chart-config-block">
-  <div class="help-text btn-sm">
-    As a
-  </div>
-  <div class="dropdown">
-    <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown">
-      {{userSelection.chartType.label}}
-      <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu">
-      <li ng-repeat="chartType in chartTypes" ng-click="changeChartType(chartType)"><a href="#">{{chartType.label}}</a></li>
-    </ul>
-  </div>
-</div>
-
 
 <!-- SVG -->
 
