@@ -17,7 +17,7 @@ angular.module('gocApp')
         scope.changeFilter = function (val) {
             $rootScope.$broadcast('CHANGE_FILTERS', {'dim': attrs.dim, 'val': val, 'scaleType': 'nominal'});
         };
-        scope.dimName = attrs.dim;
+        scope.dimName = attrs.label;
 
         // BUILD UI WITH D3
         // -----------------------------------------------------

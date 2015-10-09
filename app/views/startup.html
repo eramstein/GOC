@@ -33,7 +33,7 @@
 		</div>
 
 		<div class="features-list clearfix">
-			<dimension-summary ng-repeat="dim in data.dims" dimension="{{dim.name}}" createfn="createChart"></dimension-summary>
+			<dimension-summary ng-repeat="dim in data.dims" dimension="{{dim.name}}" label="{{dim.label}}" createfn="createChart"></dimension-summary>
 		</div>
 
 		<div class="dimension-summary-left">

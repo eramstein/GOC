@@ -5,7 +5,7 @@ angular.module('gocApp')
     return {
       templateUrl: '/views/templates/dimensionSummary.html',
       restrict: 'E',
-      scope: {name: '@dimension', createChart: '=createfn'},
+      scope: {name: '@dimension', label: '@label', createChart: '=createfn'},
       link: function postLink(scope, element, attrs) {
         var dim = Data.dimensions[scope.name];        
         scope.dataType = dim.dataType;

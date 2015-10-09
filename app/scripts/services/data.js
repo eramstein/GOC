@@ -108,17 +108,23 @@ angular.module('gocApp')
         return true;
     }
 
-    function cleanData(data) {
-        // TODO : this is redundant with the Dimension constructor, it also checks data types
-        //force numeric fields to be numbers
+    function cleanData(data) {        
         var sample = _.clone(data[0], true);
         _.forEach(sample, function(value, key) {
+            //force numeric fields to be numbers
             if(getType(key).dataType === 'number'){
                 _.forEach(data, function(d, i) {                    
                     d[key] = +d[key];
                 });
             }
-        });
+            //rename attributes to avoid spaces
+            if(key.indexOf(' ') >= 0){
+                _.forEach(data, function(d, i) {                    
+                    d[key.replace(/ /g, '_')] = d[key];
+                    delete d[key];
+                });  
+            }            
+        });      
     }
 
     function getType(key) {
@@ -148,6 +154,7 @@ angular.module('gocApp')
 
     function Dimension(key) {
         this.name = key;
+        this.label = key.replace(/_/g, ' ');
         this.scaleType = getType(key).scaleType;
         this.dataType = getType(key).dataType;
         this._groupedBy = null;

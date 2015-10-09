@@ -21,8 +21,7 @@ angular.module('gocApp')
                         _.each(data, function(value, key){
                            value.record = 'Record ' + key;
                         });
-                    }
-                    console.table(data);
+                    }                    
                     Data.prepareData(data);
                     if(callback){
                         callback();

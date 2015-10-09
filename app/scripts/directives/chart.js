@@ -143,6 +143,11 @@ angular.module('gocApp')
           'number':  _.pluck(_.filter(dimensions, { 'dataType': 'number' }), 'name')
         };
 
+        //not nice, should use dim.label
+        scope.formatDimLabel = function (d) {          
+          return d ? d.replace(/\_/g, ' ') : '';
+        };
+
         //setters 
         scope.changeShowMe = function (dim) {
           //update userSelection.showMe

@@ -176,7 +176,7 @@ CHARTS_CONSTRUCTORS.ConstantsBubles = function(svg) {
             .attr('x', 23)
             .attr('y', function (d, i) { return (i + 1) * 17 - 5;})
             .text(function (d) { return d; });
-        }
+      }
     };
 
     //---------------------------------------------------------------------------------------

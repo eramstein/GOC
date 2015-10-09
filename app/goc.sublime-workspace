@@ -88,69 +88,11 @@
 	"buffers":
 	[
 		{
-			"file": "scripts/directives/chart.js",
+			"file": "/C/Users/Etienne/Desktop/GOC/data_samples/sales.csv",
 			"settings":
 			{
-				"buffer_size": 10301,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "scripts/services/data.js",
-			"settings":
-			{
-				"buffer_size": 26872,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "Searching 30 files for \"formatNum\" (case sensitive)\n\nC:\\Users\\Etienne\\Desktop\\GOC\\app\\scripts\\charts\\boxplots.js:\n  122                  yaTextMin\n  123                    .attr('y', yMinText)\n  124:                   .text(CHARTS_UTILS.formatNum(yStats.min));\n  125                  yaTextMax\n  126                    .attr('y', yMaxText)\n  127:                   .text(CHARTS_UTILS.formatNum(yStats.max));\n  128                  yaLineQ\n  129                    .attr('y1', _this.yScale(yStats.Q1))\n  ...\n  131                  yaTextQ1\n  132                    .attr('y', yQ1Text)\n  133:                   .text(CHARTS_UTILS.formatNum(yStats.Q1));\n  134                  yaTextQ3\n  135                    .attr('y', yQ3Text)\n  136:                   .text(CHARTS_UTILS.formatNum(yStats.Q3));\n  137                  yaLineMed\n  138                    .attr('y1', _this.yScale(yStats.med)-1.5)\n  ...\n  140                  yaTextMed\n  141                    .attr('y', yMedText)\n  142:                   .text(CHARTS_UTILS.formatNum(yStats.med));\n  143              }\n  144              //case only 1 buble for the category\n  ...\n  148                    .attr('x', _this.xScale(xVal)-5)\n  149                    .attr('y', _this.yScale(yStats.med)+3)\n  150:                   .text(CHARTS_UTILS.formatNum(yStats.med));\n  151              }\n  152          });\n\nC:\\Users\\Etienne\\Desktop\\GOC\\app\\scripts\\charts\\bubleBars.js:\n   87          _this.yaTextMin\n   88            .attr('y', yMinText)\n   89:           .text(CHARTS_UTILS.formatNum(yStats.min));\n   90          _this.yaTextMax\n   91            .attr('y', yMaxText)\n   92:           .text(CHARTS_UTILS.formatNum(yStats.max));\n   93          _this.yaLineQ\n   94            .attr('y1', _this.yScale(yStats.Q1))\n   ..\n   96          _this.yaTextQ1\n   97            .attr('y', yQ1Text)\n   98:           .text(CHARTS_UTILS.formatNum(yStats.Q1));\n   99          _this.yaTextQ3\n  100            .attr('y', yQ3Text)\n  101:           .text(CHARTS_UTILS.formatNum(yStats.Q3));\n  102          _this.yaLineMed\n  103            .attr('y1', _this.yScale(yStats.med)-1.5)\n  ...\n  105          _this.yaTextMed\n  106            .attr('y', yMedText)\n  107:           .text(CHARTS_UTILS.formatNum(yStats.med));\n  108  \n  109          //sort bubles\n\nC:\\Users\\Etienne\\Desktop\\GOC\\app\\scripts\\charts\\scatterplot.js:\n  159              .transition().duration(CHARTS_CONFIG.transitionTime)\n  160              .attr('x', xScale(xMin))\n  161:             .text(CHARTS_UTILS.formatNum(xMin));\n  162            _this.xaTextMax\n  163              .transition().duration(CHARTS_CONFIG.transitionTime)\n  164              .attr('x', xScale(xMax))\n  165:             .text(CHARTS_UTILS.formatNum(xMax));\n  166            _this.xaLineQ\n  167              .transition().duration(CHARTS_CONFIG.transitionTime)\n  ...\n  171              .transition().duration(CHARTS_CONFIG.transitionTime)\n  172              .attr('x', xScale(xQ1))\n  173:             .text(CHARTS_UTILS.formatNum(xQ1));\n  174            _this.xaTextQ3\n  175              .transition().duration(CHARTS_CONFIG.transitionTime)\n  176              .attr('x', xScale(xQ3))\n  177:             .text(CHARTS_UTILS.formatNum(xQ3));\n  178            _this.xaLineMed\n  179              .transition().duration(CHARTS_CONFIG.transitionTime)\n  ...\n  183              .transition().duration(CHARTS_CONFIG.transitionTime)\n  184              .attr('x', xScale(xMed))\n  185:             .text(CHARTS_UTILS.formatNum(xMed));\n  186  \n  187            _this.yAxisLabel\n  ...\n  194              .transition().duration(CHARTS_CONFIG.transitionTime)\n  195              .attr('y', yMinText)\n  196:             .text(CHARTS_UTILS.formatNum(yMin));\n  197            _this.yaTextMax\n  198              .transition().duration(CHARTS_CONFIG.transitionTime)\n  199              .attr('y', yMaxText)\n  200:             .text(CHARTS_UTILS.formatNum(yMax));\n  201            _this.yaLineQ\n  202              .transition().duration(CHARTS_CONFIG.transitionTime)\n  ...\n  206              .transition().duration(CHARTS_CONFIG.transitionTime)\n  207              .attr('y', yQ1Text)\n  208:             .text(CHARTS_UTILS.formatNum(yQ1));\n  209            _this.yaTextQ3\n  210              .transition().duration(CHARTS_CONFIG.transitionTime)\n  211              .attr('y', yQ3Text)\n  212:             .text(CHARTS_UTILS.formatNum(yQ3));\n  213            _this.yaLineMed\n  214              .transition().duration(CHARTS_CONFIG.transitionTime)\n  ...\n  218              .transition().duration(CHARTS_CONFIG.transitionTime)\n  219              .attr('y',yMedText)\n  220:             .text(CHARTS_UTILS.formatNum(yMed));\n  221  \n  222            //update gray rectangles\n\nC:\\Users\\Etienne\\Desktop\\GOC\\app\\scripts\\charts\\utils.js:\n   32      },\n   33  \n   34:     formatNum: function(argument) {\n   35:         var formatNumExecute = d3.format(',.0f');\n   36          var formatSmallNumExecute = d3.format(',.1f');\n   37          if (isNaN(argument)) {\n   ..\n   39          } else {\n   40              if (argument > 10) {\n   41:                 return formatNumExecute(argument);\n   42              } else {\n   43                  return formatSmallNumExecute(argument);\n\nC:\\Users\\Etienne\\Desktop\\GOC\\app\\scripts\\directives\\filterboxplots.js:\n  103              brushTextMax\n  104                  .attr('x', x1)\n  105:                 .text(CHARTS_UTILS.formatNum(extent[1]));\n  106              brushTextMin\n  107                  .attr('x', x0)\n  108:                 .text(CHARTS_UTILS.formatNum(extent[0]));\n  109  \n  110              //hide min/max/med value if inside brush\n  ...\n  149                  .transition().duration(CHARTS_CONFIG.transitionTime)\n  150                  .attr('x', xMinText)\n  151:                 .text(CHARTS_UTILS.formatNum(data.min));\n  152              xaTextMax\n  153                  .transition().duration(CHARTS_CONFIG.transitionTime)\n  154                  .attr('x', xMaxText)\n  155:                 .text(CHARTS_UTILS.formatNum(data.max));\n  156              xaLineQ\n  157                  .transition().duration(CHARTS_CONFIG.transitionTime)\n  ...\n  165                  .transition().duration(CHARTS_CONFIG.transitionTime)\n  166                  .attr('x', xMedText)\n  167:                 .text(CHARTS_UTILS.formatNum(data.med));\n  168  \n  169          };\n\n29 matches across 5 files\n",
-			"settings":
-			{
-				"buffer_size": 6368,
-				"line_ending": "Windows",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "scripts/charts/barchart.js",
-			"settings":
-			{
-				"buffer_size": 12105,
+				"buffer_size": 1615499,
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "scripts/charts/oneBlob.js",
-			"settings":
-			{
-				"buffer_size": 5058,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "scripts/charts/donut.js",
-			"settings":
-			{
-				"buffer_size": 10095,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "scripts/services/dataload.js",
-			"settings":
-			{
-				"buffer_size": 1344,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "styles/main.css",
-			"settings":
-			{
-				"buffer_size": 3736,
-				"line_ending": "Unix"
 			}
 		}
 	],
@@ -222,22 +164,28 @@
 	},
 	"file_history":
 	[
-		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/boxplots.js",
-		"/C/Users/Etienne/Desktop/GOC/app/styles/main.css",
-		"/C/Users/Etienne/Desktop/GOC/app/views/templates/chart.html",
-		"/C/Users/Etienne/Desktop/GOC/app/scripts/directives/filterboxplots.js",
-		"/C/Users/Etienne/Desktop/GOC/app/views/menu.html",
-		"/C/Users/Etienne/Desktop/GOC/app/scripts/controllers/startup.js",
-		"/C/Users/Etienne/Desktop/GOC/app/views/startup.html",
-		"/C/Users/Etienne/Desktop/GOC/app/views/filters.html",
-		"/C/Users/Etienne/Desktop/GOC/app/styles/charts.css",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/constantsBubles.js",
-		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/scatterplot.js",
-		"/C/Users/Etienne/Desktop/GOC/app/scripts/directives/chart.js",
+		"/C/Users/Etienne/Desktop/GOC/app/views/filters.html",
+		"/C/Users/Etienne/Desktop/GOC/app/views/templates/filterBoxplots.html",
+		"/C/Users/Etienne/Desktop/GOC/app/views/templates/filterCheckboxes.html",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/directives/filterboxplots.js",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/directives/filtercheckboxes.js",
+		"/C/Users/Etienne/Desktop/GOC/app/views/templates/chart.html",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/services/data.js",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/directives/chart.js",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/barchart.js",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/oneBlob.js",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/donut.js",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/services/dataload.js",
+		"/C/Users/Etienne/Desktop/GOC/app/styles/main.css",
+		"/C/Users/Etienne/Desktop/GOC/app/views/startup.html",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/directives/dimensionsummary.js",
+		"/C/Users/Etienne/Desktop/GOC/app/views/templates/dimensionSummary.html",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/boxplots.js",
+		"/C/Users/Etienne/Desktop/GOC/app/views/menu.html",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/controllers/startup.js",
+		"/C/Users/Etienne/Desktop/GOC/app/styles/charts.css",
+		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/scatterplot.js",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/multiBar.js",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/chartModule.js",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/services/config.js",
@@ -247,9 +195,7 @@
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/constantsBlobs.js",
 		"/C/Users/Etienne/Desktop/Old Stuff/AdverseEvents/scripts/directives/chartBarpie.js",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/charts/bubleBars.js",
-		"/C/Users/Etienne/Desktop/GOC/app/views/templates/filterBoxplots.html",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/services/filtersmanager.js",
-		"/C/Users/Etienne/Desktop/GOC/app/scripts/directives/filtercheckboxes.js",
 		"/C/Users/Etienne/Desktop/Old Stuff/AdverseEvents/scripts/directives/chartLines.js",
 		"/C/Users/Etienne/Desktop/test.html",
 		"/C/Users/Etienne/Desktop/Old Stuff/AdverseEvents/styles/charts.css",
@@ -259,7 +205,6 @@
 		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/dashboard.js",
 		"/C/Users/Etienne/Desktop/Old Stuff/Bubbles/commonChartElements.js",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/controllers/filters.js",
-		"/C/Users/Etienne/Desktop/GOC/app/views/templates/filterCheckboxes.html",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/services/chartsmanager.js",
 		"/C/Users/Etienne/Desktop/Old Stuff/GOC/app/scripts/services/filtersmanager.js",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/controllers/main.js",
@@ -284,9 +229,6 @@
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/main.js",
 		"/C/Users/Etienne/Desktop/GOC/app/views/main.html",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/controllers/charts.js",
-		"/C/Users/Etienne/Desktop/GOC/app/views/templates/dimensionSummary.html",
-		"/C/Users/Etienne/Desktop/GOC/app/scripts/directives/dimensionsummary.js",
-		"/C/Users/Etienne/Desktop/GOC/app/scripts/services/dataload.js",
 		"/C/Users/Etienne/Desktop/GOC/app/scripts/directives/filterhandler.js",
 		"/C/Users/Etienne/Desktop/GOC/app/views/templates/filterHandler.html",
 		"/C/Users/Etienne/Desktop/GOC/Gruntfile.js",
@@ -357,7 +299,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 96.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"C:\\Users\\Etienne\\Desktop\\GOC\\app\\scripts\\",
@@ -376,6 +318,15 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"{{userSelection.showMe.dim}}",
+			"{{dim}}",
+			" dim=\"{{dim.name}}\"",
+			"dimName",
+			"name",
+			"data",
+			"o",
+			"cleanData",
+			"|",
 			"formatNum",
 			"CADCEB",
 			"1",
@@ -494,16 +445,7 @@
 			"CHARTS_CONFIG.margins",
 			"rect",
 			"bubles",
-			"makeNew",
-			"x",
-			"_filteredBy",
-			"filterRange",
-			"span",
-			"\"",
-			"changeFilter",
-			"range",
-			"value",
-			"_groupedBy"
+			"makeNew"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -547,357 +489,31 @@
 	"groups":
 	[
 		{
-			"selected": 7,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "scripts/directives/chart.js",
+					"file": "/C/Users/Etienne/Desktop/GOC/data_samples/sales.csv",
 					"settings":
 					{
-						"buffer_size": 10301,
+						"buffer_size": 1615499,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2330,
-								2330
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 641.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "scripts/services/data.js",
-					"settings":
-					{
-						"buffer_size": 26872,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4548,
-								4729
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2229.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"settings":
-					{
-						"buffer_size": 6368,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										237,
-										246
-									],
-									[
-										384,
-										393
-									],
-									[
-										628,
-										637
-									],
-									[
-										772,
-										781
-									],
-									[
-										1024,
-										1033
-									],
-									[
-										1297,
-										1306
-									],
-									[
-										1529,
-										1538
-									],
-									[
-										1658,
-										1667
-									],
-									[
-										1874,
-										1883
-									],
-									[
-										2000,
-										2009
-									],
-									[
-										2224,
-										2233
-									],
-									[
-										2504,
-										2513
-									],
-									[
-										2709,
-										2718
-									],
-									[
-										2989,
-										2998
-									],
-									[
-										3191,
-										3200
-									],
-									[
-										3473,
-										3482
-									],
-									[
-										3689,
-										3698
-									],
-									[
-										3890,
-										3899
-									],
-									[
-										4166,
-										4175
-									],
-									[
-										4364,
-										4373
-									],
-									[
-										4641,
-										4650
-									],
-									[
-										4801,
-										4810
-									],
-									[
-										4852,
-										4861
-									],
-									[
-										5090,
-										5099
-									],
-									[
-										5393,
-										5402
-									],
-									[
-										5528,
-										5537
-									],
-									[
-										5787,
-										5796
-									],
-									[
-										6000,
-										6009
-									],
-									[
-										6293,
-										6302
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								4351,
-								4374
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"output_tag": 1,
-							"result_base_dir": "",
-							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1508.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "scripts/charts/barchart.js",
-					"settings":
-					{
-						"buffer_size": 12105,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3547,
-								3547
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1382.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "scripts/charts/oneBlob.js",
-					"settings":
-					{
-						"buffer_size": 5058,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4218,
-								4218
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1965.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "scripts/charts/donut.js",
-					"settings":
-					{
-						"buffer_size": 10095,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3559,
-								3559
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1670.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "scripts/services/dataload.js",
-					"settings":
-					{
-						"buffer_size": 1344,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								992,
-								992
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "styles/main.css",
-					"settings":
-					{
-						"buffer_size": 3736,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2375,
-								2375
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2507.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

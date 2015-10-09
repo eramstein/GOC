@@ -8,13 +8,13 @@
     </div>
     <div class="dropdown">
       <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown">
-        {{userSelection.showMe.dim}}
+        {{formatDimLabel(userSelection.showMe.dim)}}
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu">
-        <li ng-repeat="dim in showMeDims.text" ng-click="changeShowMe(dim)"><a href="#">{{dim}}</a></li>
+        <li ng-repeat="dim in showMeDims.text" ng-click="changeShowMe(dim)"><a href="#">{{formatDimLabel(dim)}}</a></li>
         <li class="divider"></li>
-        <li ng-repeat="dim in showMeDims.number" ng-click="changeShowMe(dim)"><a href="#">{{dim}}</a></li>
+        <li ng-repeat="dim in showMeDims.number" ng-click="changeShowMe(dim)"><a href="#">{{formatDimLabel(dim)}}</a></li>
       </ul>
     </div>
 
@@ -42,17 +42,17 @@
     </div>
     <div class="dropdown">
       <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown">
-        {{userSelection.viewBy[0].dim}}
+        {{formatDimLabel(userSelection.viewBy[0].dim)}}
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu">
         <li ng-click="changeViewBy(null, 0)"><a href="#">---</a></li>
         <li ng-repeat="dim in showMeDims.text" ng-click="changeViewBy(dim, 0)" 
             ng-show="(userSelection.showMe.type==='number' || userSelection.showMe.hasUniqueValues) && userSelection.showMe.dim !== dim">
-            <a href="#">{{dim}}</a>
+            <a href="#">{{formatDimLabel(dim)}}</a>
         </li>
         <li class="divider" ng-show="userSelection.showMe.type==='number' || userSelection.showMe.hasUniqueValues"></li>
-        <li ng-repeat="dim in showMeDims.number" ng-click="changeViewBy(dim, 0)"><a href="#">{{dim}}</a></li>
+        <li ng-repeat="dim in showMeDims.number" ng-click="changeViewBy(dim, 0)"><a href="#">{{formatDimLabel(dim)}}</a></li>
       </ul>
     </div>
 
@@ -76,17 +76,17 @@
 
     <div class="dropdown" ng-show="userSelection.viewBy[0] && userSelection.showMe.type!=='number'">
       <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown">
-        {{userSelection.viewBy[1].dim}}
+        {{formatDimLabel(userSelection.viewBy[1].dim)}}
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu">
         <li ng-click="changeViewBy(null, 1)"><a href="#">---</a></li>
         <li ng-repeat="dim in showMeDims.text" ng-click="changeViewBy(dim, 1)"
             ng-show="(userSelection.showMe.type==='number' || userSelection.showMe.hasUniqueValues) && userSelection.showMe.dim !== dim">
-            <a href="#">{{dim}}</a>
+            <a href="#">{{formatDimLabel(dim)}}</a>
         </li>
         <li class="divider" ng-show="userSelection.showMe.type==='number' || userSelection.showMe.hasUniqueValues"></li>
-        <li ng-repeat="dim in showMeDims.number" ng-click="changeViewBy(dim, 1)"><a href="#">{{dim}}</a></li>
+        <li ng-repeat="dim in showMeDims.number" ng-click="changeViewBy(dim, 1)"><a href="#">{{formatDimLabel(dim)}}</a></li>
       </ul>
     </div>
 
@@ -116,15 +116,15 @@
     </div>
     <div class="dropdown">
       <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown">
-        {{userSelection.colorBy}}
+        {{formatDimLabel(userSelection.colorBy)}}
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu">
         <li ng-click="userSelection.colorBy=null"><a href="#">---</a></li>
         <li class="divider"></li>
-        <li ng-repeat="dim in showMeDims.text" ng-click="changeColorBy(dim)"><a href="#">{{dim}}</a></li>
+        <li ng-repeat="dim in showMeDims.text" ng-click="changeColorBy(dim)"><a href="#">{{formatDimLabel(dim)}}</a></li>
         <li class="divider"></li>
-        <li ng-repeat="dim in showMeDims.number" ng-click="changeColorBy(dim)"><a href="#">{{dim}}</a></li>
+        <li ng-repeat="dim in showMeDims.number" ng-click="changeColorBy(dim)"><a href="#">{{formatDimLabel(dim)}}</a></li>
       </ul>
     </div>
   </div>
@@ -137,12 +137,12 @@
     </div>
     <div class="dropdown">
       <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown">
-        {{userSelection.sizeBy}}
+        {{formatDimLabel(userSelection.sizeBy)}}
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu">
         <li ng-click="changeSizeBy(null)"><a href="#">---</a></li>
-        <li ng-repeat="dim in showMeDims.number" ng-click="changeSizeBy(dim)"><a href="#">{{dim}}</a></li>
+        <li ng-repeat="dim in showMeDims.number" ng-click="changeSizeBy(dim)"><a href="#">{{formatDimLabel(dim)}}</a></li>
       </ul>
     </div>
   </div>
